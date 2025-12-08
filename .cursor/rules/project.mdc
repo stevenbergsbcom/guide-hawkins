@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+---
+--
+description: Règles globales pour le projet Guide de Hawkins
+globs: ["**/*"]
+---
+# Projet : Guide de Hawkins (Stranger Things)
+## Contexte
+Site web fictif présentant la ville de Hawkins, Indiana, inspiré de la série Stranger Things.
+Ton humoristique et mystérieux, comme un vrai guide touristique pour une ville où des choses étranges se passent.
+## Stack technique
+- HTML5 sémantique
+- CSS3 (vanilla, pas de framework)
+- JavaScript vanilla (ES6+)
+- Pas de dépendances externes
+## Design & Style
+- *Ambiance* : Années 80, mystérieux, néons
+- *Couleurs principales* : - Fond : #0D0D0D (noir profond) - Accent 1 : #E50914 (rouge néon) - Accent 2 : #0A84FF (bleu électrique) - Texte : #F5F5F5 (blanc cassé)
+- *Typographies* (Google Fonts) : - Titres : Playfair Display - Corps : Inter
+- *Approche* : Mobile First, responsive
+## Structure des pages
+1. index.html - Accueil "Bienvenue à Hawkins, Indiana"
+2. apropos.html - À propos de la ville
+3. lieux.html - Lieux emblématiques
+4. residents.html - Résidents notables
+5. conseils.html - Conseils aux visiteurs
+## Conventions de code
+- Indentation : 2 espaces
+- Nommage CSS : BEM (Block Element Modifier)
+- Commentaires en français
+- Classes descriptives et sémantiques
+## Images
+- Les captures de référence sont dans /references/
+- Les images du site vont dans /images/
+- Utiliser des placeholders en attendant les vraies images
+## Instructions pour Claude
+- Toujours consulter les captures dans /references/ avant de générer du code
+- Respecter fidèlement le design des maquettes
+- Générer du code propre, commenté et accessible
+- Privilégier la sémantique HTML (header, main, section, article, footer)

@@ -1,0 +1,152 @@
+---
+alwaysApply: true
+---
+---
+description: Règles et bonnes pratiques HTML5 - W3C compliant
+globs: ["**/*.html"]
+---
+
+# Règles HTML5 - Guide de Hawkins
+
+## Standards & Validation
+- **Doctype** : Toujours commencer par `<!DOCTYPE html>`
+- **Validation W3C** : Le code doit passer le validateur W3C sans erreurs
+- **Encodage** : UTF-8 déclaré dans `<meta charset="UTF-8">`
+
+## Structure sémantique obligatoire
+Utiliser les balises HTML5 sémantiques :
+```html
+<header>    <!-- En-tête de page ou de section -->
+<nav>       <!-- Navigation principale -->
+<main>      <!-- Contenu principal (1 seul par page) -->
+<section>   <!-- Section thématique avec titre -->
+<article>   <!-- Contenu autonome -->
+<aside>     <!-- Contenu annexe -->
+<footer>    <!-- Pied de page ou de section -->
+<figure>    <!-- Contenu média avec légende -->
+<figcaption><!-- Légende de figure -->
+```
+
+## Head obligatoire
+Chaque page HTML doit contenir :
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="[Description unique 150-160 caractères]">
+  <meta name="author" content="Guide de Hawkins">
+  
+  <!-- Open Graph (réseaux sociaux) -->
+  <meta property="og:title" content="[Titre de la page]">
+  <meta property="og:description" content="[Description]">
+  <meta property="og:image" content="[URL image]">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <title>[Titre de la page] | Guide de Hawkins</title>
+</head>
+```
+
+## Accessibilité (A11y) - OBLIGATOIRE
+- **Images** : Toujours un attribut `alt` descriptif
+```html
+  <img src="image.webp" alt="Description précise de l'image" width="800" height="600">
+```
+- **Liens** : Texte descriptif (jamais "cliquez ici")
+```html
+  <a href="lieux.html">Découvrir les lieux emblématiques</a>
+```
+- **Formulaires** : Labels associés aux inputs
+```html
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+```
+- **Hiérarchie des titres** : Respecter l'ordre h1 → h2 → h3 (un seul h1 par page)
+- **Skip link** : Lien d'évitement pour la navigation clavier
+```html
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+```
+- **Attributs ARIA** : Utiliser quand nécessaire
+```html
+  <button aria-label="Ouvrir le menu" aria-expanded="false">
+  <nav aria-label="Navigation principale">
+```
+
+## SEO - Bonnes pratiques
+- **Un seul `<h1>` par page** contenant le mot-clé principal
+- **URLs propres** : `lieux.html` plutôt que `page2.html`
+- **Liens internes** : Relier les pages entre elles
+- **Balise canonical** si nécessaire :
+```html
+  <link rel="canonical" href="https://www.hawkins-guide.com/lieux.html">
+```
+- **Données structurées** (Schema.org) pour le SEO avancé
+
+## Performance
+- **Lazy loading** pour les images sous le fold :
+```html
+  <img src="image.webp" alt="Description" loading="lazy">
+```
+- **Dimensions explicites** : Toujours spécifier width et height
+- **Preload** pour les ressources critiques :
+```html
+  <link rel="preload" href="css/style.css" as="style">
+```
+
+## Conventions de code
+- Indentation : 2 espaces
+- Attributs entre guillemets doubles : `class="ma-classe"`
+- Balises auto-fermantes sans slash : `<img>` `<br>` `<hr>` `<input>`
+- Noms de classes en kebab-case : `hero-section`, `nav-link`
+- IDs uniques et descriptifs
+
+## Structure type d'une page
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Metas, titre, CSS -->
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu</a>
+  
+  <header class="site-header">
+    <nav class="nav-main" aria-label="Navigation principale">
+      <!-- Logo + liens -->
+    </nav>
+  </header>
+  
+  <main id="main-content">
+    <section class="hero">
+      <h1>Titre principal</h1>
+    </section>
+    
+    <section class="section-name">
+      <h2>Titre de section</h2>
+      <!-- Contenu -->
+    </section>
+  </main>
+  
+  <footer class="site-footer">
+    <!-- Footer content -->
+  </footer>
+  
+  <script src="js/script.js"></script>
+</body>
+</html>
+```

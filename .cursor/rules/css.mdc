@@ -1,0 +1,123 @@
+---
+alwaysApply: true
+---
+--
+description: Règles et bonnes pratiques CSS3 modernes
+globs: ["**/*.css"]
+---
+# Règles CSS3 - Guide de Hawkins
+## Standards & Compatibilité
+- *CSS3* avec propriétés modernes
+- *Compatibilité* : Dernières versions de Chrome, Firefox, Safari, Edge
+- *Préfixes vendeurs* : Uniquement si nécessaire (utiliser Autoprefixer en prod)
+## Architecture CSS
+### Organisation du fichier style.css
+```css
+/* ===================================
+ TABLE DES MATIÈRES =================================== 1. Variables CSS (Custom Properties) 2. Reset & Base 3. Typographie 4. Layout & Grid 5. Composants 6. Utilitaires 7. Media Queries
+ =================================== */
+```
+### 1. Variables CSS (Custom Properties)
+```css
+:root { /* Couleurs */ --color-bg-primary: #0D0D0D; --color-bg-secondary: #1A1A1A; --color-accent-red: #E50914; --color-accent-blue: #0A84FF; --color-text-primary: #F5F5F5; --color-text-secondary: #AAAAAA; /* Typographie */ --font-heading: 'Playfair Display', Georgia, serif; --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Tailles de police (fluid typography) */ --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem); --fs-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem); --fs-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); --fs-lg: clamp(1.125rem, 1rem + 0.6vw, 1.25rem); --fs-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); --fs-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem); --fs-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem); --fs-4xl: clamp(2.5rem, 2rem + 3vw, 4rem); /* Espacements */ --space-xs: 0.25rem; --space-sm: 0.5rem; --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2rem; --space-2xl: 3rem; --space-3xl: 5rem; /* Largeurs */ --max-width: 1200px; --content-width: 800px; /* Transitions */ --transition-fast: 150ms ease; --transition-base: 300ms ease; --transition-slow: 500ms ease; /* Ombres */ --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5); --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5); --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5); --shadow-glow-red: 0 0 20px rgba(229, 9, 20, 0.5); --shadow-glow-blue: 0 0 20px rgba(10, 132, 255, 0.5); /* Border radius */ --radius-sm: 4px; --radius-md: 8px; --radius-lg: 16px; --radius-full: 9999px;
+}
+```
+### 2. Reset moderne (Box-sizing & Reset)
+```css
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0;
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%;
+}
+body { min-height: 100vh; line-height: 1.6; font-family: var(--font-body); font-size: var(--fs-base); color: var(--color-text-primary); background-color: var(--color-bg-primary); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+}
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto;
+}
+input, button, textarea, select { font: inherit;
+}
+a { color: inherit; text-decoration: none;
+}
+ul, ol { list-style: none;
+}
+```
+## Méthodologie BEM (Block Element Modifier)
+```css
+/* Block */
+.card { }
+/* Element (séparé par __) */
+.card__title { }
+.card__image { }
+.card__content { }
+/* Modifier (séparé par --) */
+.card--featured { }
+.card--dark { }
+.card__title--large { }
+```
+## Layout moderne
+### Flexbox
+```css
+.flex-center { display: flex; justify-content: center; align-items: center;
+}
+.flex-between { display: flex; justify-content: space-between; align-items: center;
+}
+```
+### CSS Grid
+```css
+.grid { display: grid; gap: var(--space-lg);
+}
+.grid--2-cols { grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols { grid-template-columns: repeat(3, 1fr);
+}
+.grid--auto-fit { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+```
+### Container
+```css
+.container { width: 100%; max-width: var(--max-width); margin-inline: auto; padding-inline: var(--space-lg);
+}
+```
+## Mobile First - Media Queries
+```css
+/* Base = Mobile (< 640px) */
+.element { }
+/* Tablet (≥ 640px) */
+@media (min-width: 640px) { .element { }
+}
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) { .element { }
+}
+/* Large Desktop (≥ 1280px) */
+@media (min-width: 1280px) { .element { }
+}
+```
+## Accessibilité CSS
+```css
+/* Focus visible pour navigation clavier */
+:focus-visible { outline: 2px solid var(--color-accent-blue); outline-offset: 2px;
+}
+/* Masquer visuellement mais accessible aux lecteurs d'écran */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+/* Skip link */
+.skip-link { position: absolute; top: -40px; left: 0; padding: var(--space-sm) var(--space-md); background: var(--color-accent-red); color: white; z-index: 100;
+}
+.skip-link:focus { top: 0;
+}
+/* Respecter les préférences utilisateur */
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+@media (prefers-color-scheme: light) { /* Variante claire si souhaitée */
+}
+```
+## Performance CSS
+- *Éviter* les sélecteurs trop spécifiques : `.header .nav .list .item a { }`
+- *Préférer* les classes directes : `.nav-link { }`
+- *Utiliser* `will-change` avec parcimonie pour les animations
+- *Éviter* `@import` dans CSS (utiliser `<link>` dans HTML)
+## Conventions de code
+- Indentation : 2 espaces
+- Une propriété par ligne
+- Espace après les `:` → `color: red;`
+- Ordre des propriétés : Position → Display → Box Model → Typography → Visual → Misc

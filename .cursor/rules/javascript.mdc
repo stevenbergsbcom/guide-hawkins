@@ -1,0 +1,181 @@
+---
+alwaysApply: true
+---
+--
+description: Règles et bonnes pratiques JavaScript ES6+ modernes
+globs: ["**/*.js"]
+---
+# Règles JavaScript - Guide de Hawkins
+## Standards & Compatibilité
+- *ES6+* (ECMAScript 2015 et versions ultérieures)
+- *Vanilla JS* uniquement (pas de jQuery ni frameworks)
+- *Compatibilité* : Navigateurs modernes (pas d'IE11)
+## Conventions de base
+### Déclaration des variables
+```javascript
+// ✅ Utiliser const par défaut
+const MAX_ITEMS = 10;
+const config = { theme: 'dark' };
+// ✅ Utiliser let si réassignation nécessaire
+let counter = 0;
+counter += 1;
+// ❌ Ne jamais utiliser var
+var oldWay = 'non'; // Interdit
+```
+### Nommage
+```javascript
+// Variables et fonctions : camelCase
+const userName = 'Mike Wheeler';
+function getUserData() { }
+// Constantes globales : SCREAMING_SNAKE_CASE
+const API_ENDPOINT = '/api/v1';
+const MAX_RETRIES = 3;
+// Classes : PascalCase
+class UserProfile { }
+// Fichiers : kebab-case// script.js, form-validation.js, nav-mobile.js
+```
+## Fonctions modernes
+### Arrow Functions
+```javascript
+// ✅ Pour les callbacks courts
+const numbers = [1, 2, 3];
+const doubled = numbers.map(n => n * 2);
+// ✅ Pour les fonctions avec this
+document.addEventListener('click', (e) => { this.handleClick(e);
+});
+// ✅ Fonctions nommées pour meilleur debugging
+const calculateTotal = (items) => { return items.reduce((sum, item) => sum + item.price, 0);
+};
+```
+### Paramètres par défaut
+```javascript
+function greet(name = 'Visiteur', town = 'Hawkins') { return `Bienvenue à ${town}, ${name}!`;
+}
+```
+### Destructuring
+```javascript
+// Objets
+const { name, age, location } = user;
+// Tableaux
+const [first, second, ...rest] = items;
+// Dans les paramètres
+function displayUser({ name, email }) { console.log(`${name}: ${email}`);
+}
+```
+### Template Literals
+```javascript
+// ✅ Pour les chaînes avec variables
+const message = `Bienvenue à ${town}, ${userName}!`;
+// ✅ Pour les chaînes multi-lignes
+const html = ` ${title} ${description}
+`;
+```
+## Manipulation du DOM
+### Sélection d'éléments
+```javascript
+// ✅ Méthodes modernes
+const element = document.querySelector('.my-class');
+const elements = document.querySelectorAll('.my-class');
+const byId = document.getElementById('my-id');
+// ❌ Éviter
+document.getElementsByClassName('my-class'); // Retourne HTMLCollection live
+```
+### Création d'éléments
+```javascript
+// ✅ Méthode propre
+const card = document.createElement('article');
+card.className = 'card';
+card.innerHTML = ` ${title} ${description}
+`;
+container.appendChild(card);
+// ✅ Encore mieux avec template
+const template = document.getElementById('card-template');
+const clone = template.content.cloneNode(true);
+container.appendChild(clone);
+```
+### Event Listeners
+```javascript
+// ✅ addEventListener (recommandé)
+button.addEventListener('click', handleClick);
+// ✅ Avec options
+element.addEventListener('scroll', handleScroll, { passive: true });
+// ✅ Event delegation pour les listes
+document.querySelector('.list').addEventListener('click', (e) => { if (e.target.matches('.list-item')) { handleItemClick(e.target); }
+});
+// ✅ Nettoyage avec AbortController
+const controller = new AbortController();
+element.addEventListener('click', handler, { signal: controller.signal });
+// Plus tard : controller.abort();
+```
+## Async/Await & Promises
+```javascript
+// ✅ Async/await (recommandé)
+async function fetchData(url) { try { const response = await fetch(url); if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); } const data = await response.json(); return data; } catch (error) { console.error('Erreur lors du fetch:', error); throw error; }
+}
+// ✅ Gestion des erreurs
+try { const data = await fetchData('/api/locations'); renderLocations(data);
+} catch (error) { showErrorMessage('Impossible de charger les données');
+}
+```
+## Modules ES6
+```javascript
+// utils.js - Export
+export const formatDate = (date) => { };
+export const capitalize = (str) => { };
+export default class App { }
+// main.js - Import
+import App, { formatDate, capitalize } from './utils.js';
+```
+## Structure recommandée du fichier principal
+```javascript
+/** * Guide de Hawkins - Script principal * @author [Ton nom] * @version 1.0.0 */
+'use strict';
+// ===================================// CONSTANTES & CONFIGURATION// ===================================
+const CONFIG = { animationDuration: 300, breakpoints: { mobile: 640, tablet: 1024, },
+};
+// ===================================// SÉLECTEURS DOM// ===================================
+const DOM = { header: document.querySelector('.site-header'), navToggle: document.querySelector('.nav-toggle'), navMenu: document.querySelector('.nav-menu'),
+};
+// ===================================// FONCTIONS UTILITAIRES// ===================================
+const utils = { debounce(fn, delay = 250) { let timeoutId; return (...args) => { clearTimeout(timeoutId); timeoutId = setTimeout(() => fn(...args), delay); }; }, throttle(fn, limit = 250) { let inThrottle; return (...args) => { if (!inThrottle) { fn(...args); inThrottle = true; setTimeout(() => inThrottle = false, limit); } }; },
+};
+// ===================================// COMPOSANTS// ===================================
+const Navigation = { init() { if (!DOM.navToggle) return; DOM.navToggle.addEventListener('click', this.toggle.bind(this)); }, toggle() { DOM.navMenu.classList.toggle('is-open'); const isOpen = DOM.navMenu.classList.contains('is-open'); DOM.navToggle.setAttribute('aria-expanded', isOpen); },
+};
+// ===================================// INITIALISATION// ===================================
+function init() { Navigation.init(); // Autres initialisations...
+}
+// Lancer quand le DOM est prêt
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init);
+} else { init();
+}
+```
+## Accessibilité JavaScript
+```javascript
+// ✅ Gestion du focus
+function openModal(modal) { modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false'); // Sauvegarder et déplacer le focus const previousFocus = document.activeElement; const firstFocusable = modal.querySelector('button, [href], input'); firstFocusable?.focus(); // Restaurer le focus à la fermeture modal.addEventListener('close', () => { previousFocus?.focus(); }, { once: true });
+}
+// ✅ Navigation clavier
+element.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleActivation(); } if (e.key === 'Escape') { handleClose(); }
+});
+```
+## Performance
+```javascript
+// ✅ Debounce pour les événements fréquents
+window.addEventListener('resize', utils.debounce(handleResize, 250));
+window.addEventListener('scroll', utils.throttle(handleScroll, 100));
+// ✅ Lazy loading des images
+const lazyImages = document.querySelectorAll('img[data-src]');
+const imageObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const img = entry.target; img.src = img.dataset.src; imageObserver.unobserve(img); } });
+});
+lazyImages.forEach(img => imageObserver.observe(img));
+```
+## Sécurité
+```javascript
+// ✅ Échapper le HTML pour éviter XSS
+function escapeHTML(str) { const div = document.createElement('div'); div.textContent = str; return div.innerHTML;
+}
+// ❌ Ne jamais faire ça avec des données utilisateur
+element.innerHTML = userInput; // Danger XSS!// ✅ Utiliser textContent pour le texte
+element.textContent = userInput; // Sûr
+```

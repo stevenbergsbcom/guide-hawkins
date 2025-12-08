@@ -1,0 +1,26 @@
+# Système
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dépendances (si ajoutées plus tard)
+node_modules/
+
+# Fichiers de build
+dist/
+build/
+
+# Fichiers temporaires
+*.log
+*.tmp
+
+# Fichiers sensibles
+.env
+.env.local
+
+# Références design (optionnel - décommenter si tu ne veux pas les versionner)# references/
