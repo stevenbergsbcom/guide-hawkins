@@ -432,16 +432,28 @@ p {
   opacity: 0;
 }
 
-.nav-menu.is-open .nav-item:nth-child(1) { animation-delay: 0.1s; }
-.nav-menu.is-open .nav-item:nth-child(2) { animation-delay: 0.15s; }
-.nav-menu.is-open .nav-item:nth-child(3) { animation-delay: 0.2s; }
-.nav-menu.is-open .nav-item:nth-child(4) { animation-delay: 0.25s; }
+.nav-menu.is-open .nav-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.nav-menu.is-open .nav-item:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.nav-menu.is-open .nav-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.nav-menu.is-open .nav-item:nth-child(4) {
+  animation-delay: 0.25s;
+}
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -567,21 +579,23 @@ p {
 
 /* Image alignée en haut pour les pages internes */
 .hero--apropos .hero__image,
-.hero--lieux .hero__image,
 .hero--residents .hero__image,
 .hero--conseils .hero__image {
   object-position: center top;
 }
 
+/* Image centrée pour la page lieux */
+.hero--lieux .hero__image {
+  object-position: center center;
+}
+
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.2) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.2) 100%);
 }
 
 .hero .container {
@@ -602,6 +616,7 @@ p {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -609,14 +624,17 @@ p {
 }
 
 @keyframes heroGlowPulse {
-  0%, 100% {
-    text-shadow: 
+
+  0%,
+  100% {
+    text-shadow:
       0 0 10px rgba(255, 255, 255, 0.8),
       0 0 20px rgba(255, 255, 255, 0.6),
       0 0 40px rgba(255, 255, 255, 0.4);
   }
+
   50% {
-    text-shadow: 
+    text-shadow:
       0 0 20px rgba(255, 255, 255, 1),
       0 0 40px rgba(255, 255, 255, 0.8),
       0 0 60px rgba(255, 255, 255, 0.6),
@@ -635,7 +653,7 @@ p {
   color: var(--color-white);
   /* Animation au chargement */
   opacity: 0;
-  animation: 
+  animation:
     heroFadeInUp 1s ease forwards,
     heroGlowPulse 3s ease-in-out 1.5s infinite;
 }
@@ -675,12 +693,10 @@ p {
 .hero--lieux .hero__overlay,
 .hero--residents .hero__overlay,
 .hero--conseils .hero__overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.7) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
 }
 
 .hero__content--centered {
@@ -700,11 +716,11 @@ p {
 }
 
 .hero__title--glow {
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
-  animation: 
+  animation:
     heroFadeInUp 1s ease forwards,
     heroGlowPulse 3s ease-in-out 1.5s infinite;
 }
@@ -802,7 +818,7 @@ p {
   font-size: var(--fs-3xl);
   font-weight: 700;
   color: var(--color-white);
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
@@ -977,7 +993,7 @@ p {
   box-sizing: border-box;
 }
 
-.experience > .container {
+.experience>.container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 20px;
@@ -991,7 +1007,7 @@ p {
   color: var(--color-white);
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
@@ -1075,7 +1091,7 @@ p {
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
@@ -1209,7 +1225,7 @@ p {
   overflow: hidden;
 }
 
-.cta > .container {
+.cta>.container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 20px;
@@ -1257,7 +1273,7 @@ p {
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
@@ -1334,7 +1350,7 @@ p {
 .cta__image:hover {
   transform: scale(1.03) rotate(2deg);
   border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.4),
     0 0 30px rgba(255, 255, 255, 0.2);
 }
@@ -1387,7 +1403,7 @@ p {
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
@@ -1722,10 +1738,116 @@ p {
   transform: translateY(0);
 }
 
+/* Section Lieux Emblématiques */
+.lieux-emblematiques__title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.lieux-emblematiques.is-visible .lieux-emblematiques__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lieux-emblematiques__figure {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.lieux-emblematiques.is-visible .lieux-emblematiques__figure {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lieux-grid {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.3s;
+}
+
+.lieux-emblematiques.is-visible .lieux-grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Starcourt */
+.starcourt__content {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.starcourt.is-visible .starcourt__content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.starcourt__gallery {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.starcourt.is-visible .starcourt__gallery {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Section Laboratoire */
+.laboratoire__content {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.laboratoire.is-visible .laboratoire__content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.laboratoire__figure {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.laboratoire.is-visible .laboratoire__figure {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Section Byers */
+.byers__content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.byers.is-visible .byers__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.byers__image-container {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.byers.is-visible .byers__image-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* === PARTICLES.JS CONTAINERS === */
 
 #particles-lieux,
-#particles-questions {
+#particles-questions,
+#particles-starcourt,
+#particles-byers,
+#particles-foret {
   position: absolute;
   top: 0;
   left: 0;
@@ -2203,7 +2325,7 @@ button:focus-visible {
   box-sizing: border-box;
 }
 
-.unique > .container {
+.unique>.container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 20px;
@@ -2216,7 +2338,7 @@ button:focus-visible {
   color: var(--color-white);
   text-align: center;
   margin-bottom: 60px;
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 255, 255, 0.8),
     0 0 20px rgba(255, 255, 255, 0.6),
     0 0 40px rgba(255, 255, 255, 0.4);
@@ -2299,11 +2421,514 @@ button:focus-visible {
 }
 
 /* ===================================
+   6.6 PAGE LIEUX - SECTIONS
+   =================================== */
+
+/* --- Section 1 : Lieux emblématiques --- */
+.lieux-emblematiques {
+  padding: 100px 20px;
+  background-color: var(--color-bg-primary);
+}
+
+.lieux-emblematiques__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.lieux-emblematiques__title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lieux-emblematiques__grid {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* Image gauche */
+.lieux-emblematiques__figure {
+  flex: 0 0 40%;
+  margin: 0;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.lieux-emblematiques__figure.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lieux-emblematiques__image {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.lieux-emblematiques__image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3);
+}
+
+/* Grille de cards */
+.lieux-grid {
+  flex: 0 0 60%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.lieux-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards individuelles */
+.lieu-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInCard 0.6s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lieu-card:hover {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: var(--color-accent-red);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+}
+
+.lieu-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.lieu-card:hover .lieu-icon {
+  filter: grayscale(0%);
+}
+
+.lieu-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lieu-card__text {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.lieu-link {
+  color: var(--color-accent-red);
+  font-size: 0.875rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.lieu-link:hover {
+  color: var(--color-text-primary);
+  transform: translateX(5px);
+}
+
+/* Focus visible pour les cards et liens */
+.lieu-card:focus-within {
+  background: rgba(229, 9, 20, 0.1);
+  border-color: var(--color-accent-red);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+}
+
+.lieu-link:focus-visible {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Section 2 : Starcourt Mall --- */
+.starcourt {
+  position: relative;
+  padding: 100px 20px;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+#particles-starcourt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.starcourt .container {
+  position: relative;
+  z-index: 1;
+}
+
+.starcourt__grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Contenu texte */
+.starcourt__content {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.starcourt__content.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.starcourt__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.starcourt__text {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.starcourt__actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Galerie d'images */
+.starcourt__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.starcourt__gallery.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.gallery-main {
+  margin: 0;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.gallery-main img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3);
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 15px;
+}
+
+.gallery-thumbs figure {
+  flex: 1;
+  margin: 0;
+}
+
+.gallery-thumbs img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.gallery-thumbs img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(229, 9, 20, 0.3);
+}
+
+/* --- Section 3 : Laboratoire de Hawkins --- */
+.laboratoire {
+  padding: 100px 20px;
+  background-color: var(--color-bg-primary);
+}
+
+.laboratoire__grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Contenu texte */
+.laboratoire__content {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.laboratoire__content.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.laboratoire__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.laboratoire__text {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.laboratoire__actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Image avec effet mystérieux */
+.laboratoire__figure {
+  margin: 0;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.laboratoire__figure.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lab-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.lab-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.lab-image:hover::after {
+  opacity: 0;
+}
+
+.lab-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.lab-image:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3);
+}
+
+/* --- Section 4 : Maison des Byers --- */
+.byers {
+  position: relative;
+  padding: 100px 20px;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.byers .container {
+  position: relative;
+  z-index: 1;
+}
+
+.byers__content {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.byers__content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.byers__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.byers__text {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.byers__actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Image avec effet lumières de Noël */
+.byers__image-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.byers__image-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.byers__image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+.byers__image-container:hover img {
+  transform: scale(1.02);
+}
+
+/* Effet lumières de Noël clignotantes */
+.byers__lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(229, 9, 20, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at 40% 50%, rgba(10, 132, 255, 0.3) 0%, transparent 8%),
+    radial-gradient(circle at 60% 25%, rgba(255, 255, 0, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at 80% 60%, rgba(0, 255, 0, 0.3) 0%, transparent 8%),
+    radial-gradient(circle at 15% 70%, rgba(255, 0, 255, 0.3) 0%, transparent 8%),
+    radial-gradient(circle at 70% 80%, rgba(255, 165, 0, 0.3) 0%, transparent 10%);
+  animation: flickerLights 3s infinite alternate;
+  opacity: 0.5;
+}
+
+@keyframes flickerLights {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  25% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  75% {
+    opacity: 0.7;
+  }
+}
+
+/* ===================================
    7. MEDIA QUERIES
    =================================== */
 
 /* === MOBILE (max-width: 640px) === */
 @media (max-width: 640px) {
+
   /* Container */
   .container {
     padding-inline: 15px;
@@ -2319,7 +2944,7 @@ button:focus-visible {
   }
 
   /* Menu burger mobile - Supprimer le dropdown "Plus" */
-  .nav-item--dropdown > .nav-link--dropdown {
+  .nav-item--dropdown>.nav-link--dropdown {
     display: none !important;
   }
 
@@ -2511,6 +3136,124 @@ button:focus-visible {
 
   .unique__card-title {
     font-size: 1.1rem;
+  }
+
+  /* Section Lieux Emblématiques Mobile */
+  .lieux-emblematiques {
+    padding: 60px 15px;
+  }
+
+  .lieux-emblematiques__title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 40px;
+  }
+
+  .lieux-emblematiques__grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .lieux-emblematiques__figure {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .lieux-emblematiques__image {
+    min-height: 300px;
+  }
+
+  .lieux-grid {
+    flex: none;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .lieu-card {
+    padding: 20px;
+  }
+
+  /* Section Starcourt Mobile */
+  .starcourt {
+    padding: 60px 15px;
+  }
+
+  .starcourt__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .starcourt__title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .starcourt__actions {
+    justify-content: center;
+  }
+
+  .gallery-main img {
+    height: 250px;
+  }
+
+  .gallery-thumbs {
+    flex-direction: column;
+  }
+
+  .gallery-thumbs img {
+    height: 200px;
+  }
+
+  /* Section Laboratoire Mobile */
+  .laboratoire {
+    padding: 60px 15px;
+  }
+
+  .laboratoire__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .laboratoire__title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .laboratoire__content {
+    text-align: center;
+  }
+
+  .laboratoire__actions {
+    justify-content: center;
+  }
+
+  /* Image en premier sur mobile pour meilleure UX */
+  .laboratoire__figure {
+    order: -1;
+    margin-top: 0;
+  }
+
+  /* Section Byers Mobile */
+  .byers {
+    padding: 60px 15px;
+  }
+
+  .byers__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  .byers__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .byers__actions .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .byers__image-container {
+    border-radius: 12px;
   }
 
   /* Section Lieux Mobile */
@@ -2741,6 +3484,7 @@ button:focus-visible {
 
 /* === TABLETTE (641px - 1023px) === */
 @media (min-width: 641px) and (max-width: 1023px) {
+
   /* Header / Navigation Tablette */
   .nav-logo__image {
     height: 60px;
@@ -2899,6 +3643,80 @@ button:focus-visible {
     margin-inline: auto;
   }
 
+  /* Section Lieux Emblématiques Tablette */
+  .lieux-emblematiques__grid {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .lieux-emblematiques__figure {
+    flex: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .lieux-emblematiques__image {
+    min-height: 400px;
+  }
+
+  .lieux-grid {
+    flex: none;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Section Starcourt Tablette */
+  .starcourt__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .starcourt__content {
+    text-align: center;
+  }
+
+  .starcourt__actions {
+    justify-content: center;
+  }
+
+  .starcourt__gallery {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .gallery-main img {
+    height: 280px;
+  }
+
+  .gallery-thumbs img {
+    height: 140px;
+  }
+
+  /* Section Laboratoire Tablette */
+  .laboratoire__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .laboratoire__content {
+    text-align: center;
+  }
+
+  .laboratoire__actions {
+    justify-content: center;
+  }
+
+  .laboratoire__figure {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Section Byers Tablette */
+  .byers__image-container {
+    max-width: 700px;
+  }
+
   /* Section CTA Tablette */
   .cta__grid {
     grid-template-columns: 1fr;
@@ -2970,6 +3788,7 @@ button:focus-visible {
 
 /* === TABLETTE LARGE (768px - 1024px) === */
 @media (min-width: 768px) and (max-width: 1024px) {
+
   /* Hero - Titre plus imposant pour page d'accueil */
   .hero--home .hero__title {
     font-size: clamp(3rem, 7vw, 4.5rem);
@@ -2985,6 +3804,7 @@ button:focus-visible {
 
 /* === DESKTOP (≥ 1024px) === */
 @media (min-width: 1024px) {
+
   /* Container Desktop */
   .container {
     padding-inline: var(--space-xl);
@@ -3154,6 +3974,81 @@ button:focus-visible {
     width: auto;
   }
 
+  /* Section Lieux Emblématiques Desktop */
+  .lieux-emblematiques {
+    padding: 100px 20px;
+  }
+
+  .lieux-emblematiques__grid {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .lieux-emblematiques__figure {
+    flex: 0 0 40%;
+  }
+
+  .lieux-emblematiques__image {
+    min-height: 500px;
+  }
+
+  .lieux-grid {
+    flex: 0 0 60%;
+  }
+
+  /* Section Starcourt Desktop */
+  .starcourt {
+    padding: 100px 20px;
+  }
+
+  .starcourt__grid {
+    grid-template-columns: 45% 55%;
+    gap: 60px;
+  }
+
+  .starcourt__content {
+    text-align: left;
+  }
+
+  .starcourt__actions {
+    justify-content: flex-start;
+  }
+
+  .gallery-main img {
+    height: 300px;
+  }
+
+  .gallery-thumbs img {
+    height: 150px;
+  }
+
+  /* Section Laboratoire Desktop */
+  .laboratoire {
+    padding: 100px 20px;
+  }
+
+  .laboratoire__grid {
+    grid-template-columns: 45% 55%;
+    gap: 60px;
+  }
+
+  .laboratoire__content {
+    text-align: left;
+  }
+
+  .laboratoire__actions {
+    justify-content: flex-start;
+  }
+
+  /* Section Byers Desktop */
+  .byers {
+    padding: 100px 20px;
+  }
+
+  .byers__image-container {
+    max-width: 1000px;
+  }
+
   /* Footer Desktop */
   .footer {
     padding: 60px 0;
@@ -3205,6 +4100,7 @@ button:focus-visible {
 
 /* === PRÉFÉRENCES UTILISATEUR === */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -3221,5 +4117,516 @@ button:focus-visible {
     animation: none;
     opacity: 1;
   }
+
+  /* Désactiver l'animation des lumières de Noël */
+  .byers__lights {
+    animation: none;
+    opacity: 0.3;
+  }
 }
 
+/* ===================================
+   8. SECTIONS SUPPLEMENTAIRES PAGE LIEUX
+   =================================== */
+
+/* --- Section 5 : Collège de Hawkins --- */
+.college {
+  padding: 100px 20px;
+  background-color: var(--color-bg-primary);
+}
+
+.college__grid {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Image */
+.college__figure {
+  margin: 0;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.college__figure.visible,
+.college.is-visible .college__figure {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.college__figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.college__figure img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 25px 50px rgba(229, 9, 20, 0.3);
+}
+
+/* Contenu texte */
+.college__content {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.college__content.visible,
+.college.is-visible .college__content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.college__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.college__text {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+/* Liste de caractéristiques */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.features-list li:hover {
+  color: var(--color-text-primary);
+  transform: translateX(10px);
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-icon {
+  font-size: 1.25rem;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.features-list li:hover .feature-icon {
+  filter: grayscale(0%);
+}
+
+.college__actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* --- Section 6 : Forêt de Hawkins --- */
+.foret {
+  position: relative;
+  padding: 100px 20px;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.foret .container {
+  position: relative;
+  z-index: 1;
+}
+
+.foret__content {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.foret__content.visible,
+.foret.is-visible .foret__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.foret__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.foret__text {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.foret__actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Image avec effet brume */
+.foret__image-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.foret__image-container.visible,
+.foret.is-visible .foret__image-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.foret__image-container::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.8) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.foret__image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+.foret__image-container:hover img {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* --- Section 7 : CTA Expédition --- */
+.cta-expedition {
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 80px 20px;
+  background-color: var(--color-accent-red);
+  box-sizing: border-box;
+}
+
+.cta-expedition>.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cta-expedition__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Contenu texte */
+.cta-expedition__content {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.cta-expedition__content.visible,
+.cta-expedition.is-visible .cta-expedition__content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cta-expedition__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.cta-expedition__text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.cta-expedition__actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Boutons CTA spéciaux */
+.btn--cta-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 25px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  background-color: var(--color-white);
+  color: var(--color-accent-red);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn--cta-white:hover {
+  background-color: transparent;
+  color: var(--color-white);
+}
+
+.btn--cta-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 12px 25px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn--cta-outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-accent-red);
+}
+
+/* Image CTA */
+.cta-expedition__figure {
+  margin: 0;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease 0.2s;
+}
+
+.cta-expedition__figure.visible,
+.cta-expedition.is-visible .cta-expedition__figure {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cta-expedition__figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.cta-expedition__figure img:hover {
+  transform: scale(1.03) rotate(2deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================
+   9. RESPONSIVE SECTIONS SUPPLEMENTAIRES
+   =================================== */
+
+/* Mobile */
+@media (max-width: 640px) {
+
+  /* Section Collège Mobile */
+  .college {
+    padding: 60px 15px;
+  }
+
+  .college__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .college__figure {
+    order: -1;
+  }
+
+  .college__content {
+    text-align: center;
+  }
+
+  .college__title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .college__actions {
+    justify-content: center;
+  }
+
+  .features-list li {
+    font-size: 0.875rem;
+  }
+
+  /* Section Forêt Mobile */
+  .foret {
+    padding: 60px 15px;
+  }
+
+  .foret__title {
+    font-size: clamp(1.5rem, 5vw, 1.75rem);
+  }
+
+  .foret__image-container {
+    border-radius: 12px;
+  }
+
+  /* Section CTA Mobile */
+  .cta-expedition {
+    padding: 60px 20px;
+  }
+
+  .cta-expedition__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .cta-expedition__content {
+    text-align: center;
+  }
+
+  .cta-expedition__figure {
+    order: -1;
+  }
+
+  .cta-expedition__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-expedition__actions .btn--cta-white,
+  .cta-expedition__actions .btn--cta-outline {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Tablette */
+@media (min-width: 641px) and (max-width: 1023px) {
+
+  /* Section Collège Tablette */
+  .college__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .college__figure {
+    order: -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .college__content {
+    text-align: center;
+  }
+
+  .college__actions {
+    justify-content: center;
+  }
+
+  /* Section Forêt Tablette */
+  .foret__image-container {
+    max-width: 700px;
+  }
+
+  /* Section CTA Tablette */
+  .cta-expedition__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .cta-expedition__content {
+    text-align: center;
+  }
+
+  .cta-expedition__figure {
+    order: -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .cta-expedition__actions {
+    justify-content: center;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+
+  /* Section Collège Desktop */
+  .college {
+    padding: 100px 20px;
+  }
+
+  .college__grid {
+    grid-template-columns: 45% 55%;
+    gap: 60px;
+  }
+
+  .college__content {
+    text-align: left;
+  }
+
+  .college__actions {
+    justify-content: flex-start;
+  }
+
+  /* Section CTA Desktop */
+  .cta-expedition__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .cta-expedition__content {
+    text-align: left;
+  }
+
+  .cta-expedition__actions {
+    justify-content: flex-start;
+  }
+}

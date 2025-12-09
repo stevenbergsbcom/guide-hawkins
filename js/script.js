@@ -36,13 +36,13 @@ const utils = {
   throttle(fn, limit = 100) {
     let lastCall = 0;
     let timeoutId = null;
-    
+
     return (...args) => {
       const now = Date.now();
       const remaining = limit - (now - lastCall);
-      
+
       clearTimeout(timeoutId);
-      
+
       if (remaining <= 0) {
         lastCall = now;
         fn(...args);
@@ -66,13 +66,13 @@ const utils = {
  */
 const Header = {
   isScrolled: false,
-  
+
   init() {
     if (!DOM.header) return;
-    
+
     // Utiliser passive: true pour de meilleures performances
     window.addEventListener('scroll', utils.throttle(this.handleScroll.bind(this), 50), { passive: true });
-    
+
     // Vérifier l'état initial
     this.handleScroll();
   },
@@ -80,11 +80,11 @@ const Header = {
   handleScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
     const shouldBeScrolled = scrollY > CONFIG.scrollThreshold;
-    
+
     // Ne modifier le DOM que si l'état change
     if (shouldBeScrolled !== this.isScrolled) {
       this.isScrolled = shouldBeScrolled;
-      
+
       if (shouldBeScrolled) {
         DOM.header.classList.add('site-header--scrolled');
       } else {
@@ -102,7 +102,7 @@ const Navigation = {
 
   init() {
     if (!DOM.navToggle || !DOM.navMenu) return;
-    
+
     // Toggle au clic sur le bouton burger
     DOM.navToggle.addEventListener('click', this.toggle.bind(this));
 
@@ -317,7 +317,7 @@ const ExperienceCards = {
 
   init() {
     this.cards = document.querySelectorAll('.experience__card');
-    
+
     if (!this.cards.length) return;
 
     // Le premier article est actif par défaut
@@ -335,7 +335,7 @@ const ExperienceCards = {
     this.cards.forEach(card => {
       card.classList.remove('experience__card--active');
     });
-    
+
     // Ajouter la classe active sur la carte survolée
     hoveredCard.classList.add('experience__card--active');
   },
@@ -345,7 +345,7 @@ const ExperienceCards = {
     this.cards.forEach(card => {
       card.classList.remove('experience__card--active');
     });
-    
+
     // Remettre la classe active sur la première carte
     if (this.defaultCard) {
       this.defaultCard.classList.add('experience__card--active');
@@ -363,7 +363,7 @@ const UniqueCards = {
 
   init() {
     this.cards = document.querySelectorAll('.unique__card');
-    
+
     if (!this.cards.length) return;
 
     // Le premier article est actif par défaut
@@ -384,7 +384,7 @@ const UniqueCards = {
     this.cards.forEach(card => {
       card.classList.remove('unique__card--active');
     });
-    
+
     // Ajouter la classe active sur la carte survolée
     hoveredCard.classList.add('unique__card--active');
   },
@@ -394,7 +394,7 @@ const UniqueCards = {
     this.cards.forEach(card => {
       card.classList.remove('unique__card--active');
     });
-    
+
     // Remettre la classe active sur la première carte
     if (this.defaultCard) {
       this.defaultCard.classList.add('unique__card--active');
@@ -456,7 +456,7 @@ const FAQAccordion = {
   init() {
     this.items = document.querySelectorAll('.faq__item');
     this.questions = document.querySelectorAll('.faq__question');
-    
+
     if (!this.items.length) return;
 
     // Ajouter les event listeners sur chaque question
@@ -506,7 +506,7 @@ const FAQAccordion = {
 
   toggleItem(clickedItem) {
     const isActive = clickedItem.classList.contains('faq__item--active');
-    
+
     // Fermer tous les items
     this.items.forEach(item => {
       item.classList.remove('faq__item--active');
@@ -515,7 +515,7 @@ const FAQAccordion = {
         question.setAttribute('aria-expanded', 'false');
       }
     });
-    
+
     // Si l'item cliqué n'était pas actif, l'ouvrir
     if (!isActive) {
       clickedItem.classList.add('faq__item--active');
@@ -533,7 +533,7 @@ const FAQAccordion = {
 const ScrollAnimations = {
   init() {
     // Sélecteurs des sections à animer
-    const animatedSelectors = '.places, .experience, .faq, .cta, .newsletter, .site-footer';
+    const animatedSelectors = '.places, .experience, .faq, .cta, .newsletter, .site-footer, .lieux-emblematiques, .starcourt, .laboratoire, .byers, .college, .foret, .cta-expedition';
 
     // Vérifier si Intersection Observer est supporté
     if (!('IntersectionObserver' in window)) {
@@ -694,6 +694,21 @@ const Particles = {
     if (document.getElementById('particles-chiffres')) {
       particlesJS('particles-chiffres', this.config);
     }
+
+    // Initialiser particles.js pour la section Starcourt (page Lieux)
+    if (document.getElementById('particles-starcourt')) {
+      particlesJS('particles-starcourt', this.config);
+    }
+
+    // Initialiser particles.js pour la section Byers (page Lieux)
+    if (document.getElementById('particles-byers')) {
+      particlesJS('particles-byers', this.config);
+    }
+
+    // Initialiser particles.js pour la section Forêt (page Lieux)
+    if (document.getElementById('particles-foret')) {
+      particlesJS('particles-foret', this.config);
+    }
   },
 };
 
@@ -709,7 +724,7 @@ const CounterAnimation = {
     this.animated = true;
 
     const counters = document.querySelectorAll('.stat-number');
-    
+
     counters.forEach(counter => {
       const target = parseInt(counter.getAttribute('data-target'), 10);
       if (isNaN(target)) return;
@@ -720,20 +735,20 @@ const CounterAnimation = {
       const updateCounter = (currentTime) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
+
         // Easing function (ease-out)
         const easeOut = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(easeOut * target);
-        
+
         counter.textContent = current;
-        
+
         if (progress < 1) {
           requestAnimationFrame(updateCounter);
         } else {
           counter.textContent = target;
         }
       };
-      
+
       requestAnimationFrame(updateCounter);
     });
   },
