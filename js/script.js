@@ -820,10 +820,10 @@ const Particles = {
   config: {
     particles: {
       number: {
-        value: 50,
+        value: 25, // Réduit de 50 à 25 pour de meilleures performances
         density: {
           enable: true,
-          value_area: 800
+          value_area: 1200 // Zone plus grande = moins de densité
         }
       },
       color: {
@@ -833,44 +833,32 @@ const Particles = {
         type: 'circle'
       },
       opacity: {
-        value: 0.5,
+        value: 0.4,
         random: true,
         anim: {
-          enable: true,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false
+          enable: false // Désactivé pour performances
         }
       },
       size: {
         value: 3,
         random: true,
         anim: {
-          enable: true,
-          speed: 2,
-          size_min: 0.5,
-          sync: false
+          enable: false // Désactivé pour performances
         }
       },
       line_linked: {
-        enable: true,
-        distance: 150,
-        color: '#E50914',
-        opacity: 0.2,
-        width: 1
+        enable: false // Désactivé - très coûteux en calculs
       },
       move: {
         enable: true,
-        speed: 1,
+        speed: 0.5, // Réduit de 1 à 0.5
         direction: 'none',
         random: true,
         straight: false,
         out_mode: 'out',
         bounce: false,
         attract: {
-          enable: true,
-          rotateX: 600,
-          rotateY: 1200
+          enable: false // Désactivé pour performances
         }
       }
     },
@@ -878,28 +866,15 @@ const Particles = {
       detect_on: 'canvas',
       events: {
         onhover: {
-          enable: true,
-          mode: 'grab'
+          enable: false // Désactivé - cause du lag au scroll
         },
         onclick: {
-          enable: true,
-          mode: 'push'
+          enable: false // Désactivé pour performances
         },
         resize: true
-      },
-      modes: {
-        grab: {
-          distance: 140,
-          line_linked: {
-            opacity: 0.5
-          }
-        },
-        push: {
-          particles_nb: 4
-        }
       }
     },
-    retina_detect: true
+    retina_detect: false // Désactivé pour performances sur écrans haute résolution
   },
 
   init() {
