@@ -4,20 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Découvrez Hawkins, Indiana - Une petite ville avec de grands mystères. Explorez les lieux emblématiques et vivez une expérience inoubliable.">
+  <meta name="description" content="Découvrez Hawkins, Indiana - Une petite ville avec de grands mystères. Explorez les lieux emblématiques inspirés de Stranger Things.">
+  <meta name="keywords" content="Hawkins, Indiana, Stranger Things, guide touristique, lieux emblématiques, Starcourt Mall, Hawkins Lab, années 80, mystères, Upside Down">
   <meta name="author" content="Guide de Hawkins">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#E50914">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://guide-hawkins.com/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Guide de Hawkins - Bienvenue à Hawkins, Indiana">
-  <meta property="og:description" content="Une petite ville avec de grands mystères. Explorez les lieux qui ont marqué notre histoire.">
-  <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:description" content="Une petite ville avec de grands mystères. Explorez les lieux qui ont marqué notre histoire et découvrez les secrets de Hawkins.">
+  <meta property="og:image" content="https://guide-hawkins.com/images/og-image.jpg">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://guide-hawkins.com/">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Guide de Hawkins">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guide de Hawkins - Bienvenue à Hawkins, Indiana">
+  <meta name="twitter:description" content="Une petite ville avec de grands mystères. Explorez les lieux emblématiques de Hawkins, Indiana.">
+  <meta name="twitter:image" content="https://guide-hawkins.com/images/og-image.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +41,105 @@
   <link rel="stylesheet" href="css/style.css">
 
   <title>Bienvenue à Hawkins, Indiana | Guide de Hawkins</title>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://guide-hawkins.com/#website",
+        "name": "Guide de Hawkins",
+        "description": "Découvrez Hawkins, Indiana - Une petite ville avec de grands mystères inspirée de Stranger Things.",
+        "url": "https://guide-hawkins.com/",
+        "inLanguage": "fr-FR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://guide-hawkins.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://guide-hawkins.com/#organization",
+        "name": "Guide de Hawkins",
+        "url": "https://guide-hawkins.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://guide-hawkins.com/images/StrangerThingslogo.png",
+          "width": 200,
+          "height": 70
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "555-0147",
+          "contactType": "customer service",
+          "email": "welcome@hawkinstourism.com",
+          "areaServed": "US",
+          "availableLanguage": "French"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Main Street",
+          "addressLocality": "Hawkins",
+          "addressRegion": "Indiana",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://facebook.com/guidehawkins",
+          "https://instagram.com/guidehawkins",
+          "https://twitter.com/guidehawkins"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://guide-hawkins.com/#webpage",
+        "url": "https://guide-hawkins.com/",
+        "name": "Bienvenue à Hawkins, Indiana | Guide de Hawkins",
+        "description": "Découvrez Hawkins, Indiana - Une petite ville avec de grands mystères. Explorez les lieux emblématiques et vivez une expérience inoubliable.",
+        "isPartOf": { "@id": "https://guide-hawkins.com/#website" },
+        "about": { "@id": "https://guide-hawkins.com/#organization" },
+        "inLanguage": "fr-FR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://guide-hawkins.com/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://guide-hawkins.com/"
+          }
+        ]
+      },
+      {
+        "@type": "TouristDestination",
+        "name": "Hawkins, Indiana",
+        "description": "Petite ville de l'Indiana connue pour ses mystères et son atmosphère années 80.",
+        "touristType": ["Adventure tourism", "Cultural tourism"],
+        "includesAttraction": [
+          {
+            "@type": "TouristAttraction",
+            "name": "Starcourt Mall",
+            "description": "Centre commercial emblématique des années 80"
+          },
+          {
+            "@type": "TouristAttraction",
+            "name": "Hawkins Lab",
+            "description": "Laboratoire national aux secrets bien gardés"
+          },
+          {
+            "@type": "TouristAttraction",
+            "name": "Forêt de Hawkins",
+            "description": "Forêt mystérieuse aux phénomènes inexpliqués"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -39,7 +151,7 @@
     <div class="container">
       <nav class="nav-main" aria-label="Navigation principale">
         <a href="index.html" class="nav-logo">
-          <img src="images/StrangerThingslogo.png" alt="Stranger Things - Guide de Hawkins" class="nav-logo__image">
+          <img src="images/StrangerThingslogo.png" alt="Stranger Things - Guide de Hawkins" class="nav-logo__image" width="200" height="70">
         </a>
 
         <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -59,21 +171,21 @@
             <a href="residents.html" class="nav-link">Résidents</a>
           </li>
           <li class="nav-item nav-item--dropdown">
-            <button class="nav-link nav-link--dropdown" aria-expanded="false">
+            <button class="nav-link nav-link--dropdown" aria-expanded="false" aria-haspopup="menu" aria-controls="dropdown-menu">
               Plus
               <svg class="nav-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </button>
-            <ul class="nav-dropdown">
-              <li><a href="apropos.html" class="nav-dropdown__link">À propos</a></li>
-              <li><a href="conseils.html" class="nav-dropdown__link">Conseils</a></li>
+            <ul class="nav-dropdown" id="dropdown-menu" role="menu" aria-label="Menu supplémentaire">
+              <li role="none"><a href="apropos.html" class="nav-dropdown__link" role="menuitem">À propos</a></li>
+              <li role="none"><a href="conseils.html" class="nav-dropdown__link" role="menuitem">Conseils</a></li>
             </ul>
           </li>
         </ul>
 
         <div class="nav-actions">
-          <a href="#" class="btn btn--outline btn--sm">Français</a>
+          <a href="#" class="btn btn--outline btn--sm" aria-label="Changer la langue du site" title="Sélectionner la langue">Français</a>
           <a href="lieux.html" class="btn btn--white btn--sm">Visiter</a>
         </div>
       </nav>
@@ -84,14 +196,14 @@
   <main id="main-content">
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero__background">
-        <img src="images/hero-hawkins.webp" alt="" loading="eager" class="hero__image">
+        <img src="images/hero-hawkins.webp" alt="Vue panoramique de la ville de Hawkins, Indiana au coucher du soleil" loading="eager" class="hero__image" width="1920" height="1080">
         <div class="hero__overlay"></div>
       </div>
       <div class="container">
         <div class="hero__content">
-          <h1 class="hero__title">Bienvenue à Hawkins, Indiana</h1>
+          <h1 id="hero-title" class="hero__title">Bienvenue à Hawkins, Indiana</h1>
           <p class="hero__subtitle">Une petite ville avec de grands mystères. Explorez les lieux qui ont marqué notre histoire et découvrez l'incroyable charme qui rend cet endroit inoubliable.</p>
           <div class="hero__actions">
             <a href="lieux.html" class="btn btn--white">Découvrir</a>
@@ -102,13 +214,13 @@
     </section>
 
     <!-- Lieux Section -->
-    <section class="places" id="places">
+    <section class="places" id="places" aria-labelledby="places-title">
       <div id="particles-lieux" aria-hidden="true"></div>
       <div class="container">
         <!-- Partie haute centrée -->
         <header class="places__header">
           <span class="places__label">Attractions</span>
-          <h2 class="places__title">Lieux à ne pas manquer</h2>
+          <h2 id="places-title" class="places__title">Lieux à ne pas manquer</h2>
           <p class="places__description">Hawkins regorge de sites fascinants qui racontent l'histoire de notre communauté. Chaque lieu possède son propre charme et ses secrets bien gardés.</p>
           <div class="places__actions">
             <a href="lieux.html" class="btn btn--white">Explorer</a>
@@ -117,16 +229,16 @@
         </header>
 
         <!-- Tabs/Onglets -->
-        <nav class="places__tabs" aria-label="Navigation des lieux">
-          <button class="places__tab places__tab--active" data-tab="starcourt" aria-selected="true">Starcourt Mall</button>
-          <button class="places__tab" data-tab="lab" aria-selected="false">Hawkins Lab</button>
-          <button class="places__tab" data-tab="forest" aria-selected="false">Forêt de Hawkins</button>
-        </nav>
+        <div class="places__tabs" role="tablist" aria-label="Lieux emblématiques de Hawkins">
+          <button class="places__tab places__tab--active" role="tab" id="tab-starcourt" data-tab="starcourt" aria-selected="true" aria-controls="tabpanel-places" tabindex="0">Starcourt Mall</button>
+          <button class="places__tab" role="tab" id="tab-lab" data-tab="lab" aria-selected="false" aria-controls="tabpanel-places" tabindex="-1">Hawkins Lab</button>
+          <button class="places__tab" role="tab" id="tab-forest" data-tab="forest" aria-selected="false" aria-controls="tabpanel-places" tabindex="-1">Forêt de Hawkins</button>
+        </div>
 
         <!-- Partie basse en 2 colonnes -->
-        <div class="places__grid">
+        <div class="places__grid" role="tabpanel" id="tabpanel-places" aria-labelledby="tab-starcourt" tabindex="0">
           <figure class="places__figure">
-            <img src="images/starcourt.webp" alt="Vue du Starcourt Mall" class="places__image" id="places-image" loading="lazy">
+            <img src="images/starcourt.webp" alt="Vue extérieure du centre commercial Starcourt Mall à Hawkins" class="places__image" id="places-image" loading="lazy" width="800" height="600">
           </figure>
           <div class="places__content" id="places-content">
             <span class="places__label" id="places-content-label">Centre commercial</span>
@@ -142,13 +254,13 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="experience" id="experience">
+    <section class="experience" id="experience" aria-labelledby="experience-title">
       <div class="container">
-        <h2 class="experience__title">Pourquoi visiter Hawkins ?</h2>
+        <h2 id="experience-title" class="experience__title">Pourquoi visiter Hawkins ?</h2>
 
         <div class="experience__grid">
           <figure class="experience__figure">
-            <img src="images/section3.jpeg" alt="Scène de la vie à Hawkins" class="experience__image" loading="lazy">
+            <img src="images/section3.jpeg" alt="Scène de la vie quotidienne à Hawkins dans les années 80" class="experience__image" loading="lazy" width="800" height="600">
           </figure>
 
           <div class="experience__content">
@@ -172,66 +284,66 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq" id="faq">
+    <section class="faq" id="faq" aria-labelledby="faq-title">
       <div id="particles-questions" aria-hidden="true"></div>
       <div class="container">
         <header class="faq__header">
-          <h2 class="faq__title">Questions</h2>
+          <h2 id="faq-title" class="faq__title">Questions</h2>
           <p class="faq__subtitle">Trouvez les réponses aux questions les plus fréquemment posées par nos visiteurs.</p>
         </header>
 
-        <div class="faq__list">
-          <div class="faq__item faq__item--active">
-            <button class="faq__question" aria-expanded="true">
+        <div class="faq__list" role="list">
+          <div class="faq__item" role="listitem">
+            <button class="faq__question" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
               <span class="faq__icon-emoji" aria-hidden="true">🔒</span>
               <span class="faq__question-text">Hawkins est-elle sûre ?</span>
               <span class="faq__chevron" aria-hidden="true">▼</span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
               <p>Hawkins est une destination sûre pour les touristes. Bien que notre histoire soit complexe, la ville accueille chaleureusement les visiteurs. Suivez simplement nos conseils de sécurité et vous passerez un excellent séjour.</p>
             </div>
           </div>
 
-          <div class="faq__item">
-            <button class="faq__question" aria-expanded="false">
+          <div class="faq__item" role="listitem">
+            <button class="faq__question" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
               <span class="faq__icon-emoji" aria-hidden="true">📅</span>
               <span class="faq__question-text">Quand visiter Hawkins ?</span>
               <span class="faq__chevron" aria-hidden="true">▼</span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
               <p>L'automne est la meilleure saison pour visiter Hawkins. Les températures sont agréables et l'atmosphère est particulièrement mystérieuse. L'hiver apporte aussi son charme avec les décorations rétro.</p>
             </div>
           </div>
 
-          <div class="faq__item">
-            <button class="faq__question" aria-expanded="false">
+          <div class="faq__item" role="listitem">
+            <button class="faq__question" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
               <span class="faq__icon-emoji" aria-hidden="true">🏨</span>
               <span class="faq__question-text">Où se loger à Hawkins ?</span>
               <span class="faq__chevron" aria-hidden="true">▼</span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
               <p>Hawkins propose plusieurs options d'hébergement, des motels classiques aux auberges charmantes. Chaque établissement offre une expérience authentique des années 80.</p>
             </div>
           </div>
 
-          <div class="faq__item">
-            <button class="faq__question" aria-expanded="false">
+          <div class="faq__item" role="listitem">
+            <button class="faq__question" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
               <span class="faq__icon-emoji" aria-hidden="true">👻</span>
               <span class="faq__question-text">Y a-t-il des phénomènes étranges ?</span>
               <span class="faq__chevron" aria-hidden="true">▼</span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
               <p>Hawkins a connu des événements inhabituels par le passé. Aujourd'hui, la ville est calme et stable. Les visiteurs peuvent explorer librement sans crainte.</p>
             </div>
           </div>
 
-          <div class="faq__item">
-            <button class="faq__question" aria-expanded="false">
+          <div class="faq__item" role="listitem">
+            <button class="faq__question" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
               <span class="faq__icon-emoji" aria-hidden="true">🚗</span>
               <span class="faq__question-text">Comment se déplacer en ville ?</span>
               <span class="faq__chevron" aria-hidden="true">▼</span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
               <p>Une voiture est recommandée pour explorer Hawkins. Les transports en commun sont limités, mais la ville est facilement navigable. Les vélos sont aussi une excellente option.</p>
             </div>
           </div>
@@ -247,11 +359,11 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta" id="cta">
+    <section class="cta" id="cta" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta__grid">
           <div class="cta__content">
-            <h2 class="cta__title">Explorez les secrets de Hawkins</h2>
+            <h2 id="cta-title" class="cta__title">Explorez les secrets de Hawkins</h2>
             <p class="cta__text">Les lieux emblématiques vous attendent. Venez découvrir ce qui rend cette ville inoubliable.</p>
             <div class="cta__actions">
               <a href="lieux.html" class="cta__btn cta__btn--primary">Explorer</a>
@@ -259,31 +371,31 @@
             </div>
           </div>
           <figure class="cta__figure">
-            <img src="images/section4.jpg" alt="Les secrets de Hawkins" class="cta__image" loading="lazy">
+            <img src="images/section4.jpg" alt="Paysage mystérieux de Hawkins avec des lumières étranges dans le ciel nocturne" class="cta__image" loading="lazy" width="800" height="600">
           </figure>
         </div>
       </div>
     </section>
 
     <!-- Newsletter Section -->
-    <section class="newsletter" id="newsletter">
+    <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
       <div class="newsletter__background">
-        <img src="images/footer.jpg" alt="" class="newsletter__bg-image" loading="lazy">
+        <img src="images/footer.jpg" alt="Forêt de Hawkins au crépuscule avec une atmosphère mystérieuse" class="newsletter__bg-image" loading="lazy" width="1920" height="800">
         <div class="newsletter__overlay"></div>
       </div>
       <div class="newsletter__line"></div>
       <div class="container">
         <div class="newsletter__content">
-          <h2 class="newsletter__title">Restez informé des nouvelles</h2>
+          <h2 id="newsletter-title" class="newsletter__title">Restez informé des nouvelles</h2>
           <p class="newsletter__text">Inscrivez-vous pour recevoir les mises à jour et les offres exclusives de Hawkins.</p>
-          <form class="newsletter__form" action="#" method="post">
+          <form class="newsletter__form" action="#" method="post" aria-labelledby="newsletter-title">
             <div class="newsletter__input-group">
               <label for="newsletter-email" class="visually-hidden">Adresse email</label>
-              <input type="email" id="newsletter-email" name="email" placeholder="Votre email" required class="newsletter__input">
-              <button type="submit" class="newsletter__btn">S'inscrire</button>
+              <input type="email" id="newsletter-email" name="email" placeholder="Votre email" required class="newsletter__input" aria-describedby="newsletter-legal" autocomplete="email">
+              <button type="submit" class="newsletter__btn" aria-label="S'inscrire à la newsletter">S'inscrire</button>
             </div>
           </form>
-          <p class="newsletter__legal">En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.</p>
+          <p id="newsletter-legal" class="newsletter__legal">En vous inscrivant, vous acceptez nos conditions d'utilisation et notre politique de confidentialité.</p>
         </div>
       </div>
     </section>
@@ -299,7 +411,7 @@
           <!-- Colonne 1 : Logo et Contact -->
           <div class="footer__brand">
             <a href="index.html" class="footer__logo">
-              <img src="images/StrangerThingslogo.png" alt="Stranger Things - Guide de Hawkins" class="footer__logo-image">
+              <img src="images/StrangerThingslogo.png" alt="Stranger Things - Guide de Hawkins" class="footer__logo-image" width="200" height="70">
             </a>
             <address class="footer__info">
               <div class="footer__info-item">
@@ -372,8 +484,8 @@
         <div class="footer__bottom">
           <p class="footer__copyright">© 2026 Guide de Hawkins - Site fictif inspiré de Stranger Things</p>
           <nav class="footer__legal" aria-label="Liens légaux">
-            <a href="#" class="footer__legal-link">Politique de confidentialité</a>
-            <a href="#" class="footer__legal-link">Conditions d'utilisation</a>
+            <a href="#" class="footer__legal-link" title="Consulter notre politique de confidentialité">Politique de confidentialité</a>
+            <a href="#" class="footer__legal-link" title="Lire les conditions d'utilisation du site">Conditions d'utilisation</a>
           </nav>
         </div>
       </div>

@@ -98,16 +98,61 @@ const Header = {
  * Gestion de la Navigation mobile
  */
 const Navigation = {
+  isOpen: false,
+
   init() {
-    if (!DOM.navToggle) return;
+    if (!DOM.navToggle || !DOM.navMenu) return;
     
+    // Toggle au clic sur le bouton burger
     DOM.navToggle.addEventListener('click', this.toggle.bind(this));
+
+    // Fermer au clic sur un lien du menu
+    const navLinks = DOM.navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', this.close.bind(this));
+    });
+
+    // Fermer au clic sur le dropdown links
+    const dropdownLinks = DOM.navMenu.querySelectorAll('.nav-dropdown__link');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', this.close.bind(this));
+    });
+
+    // Fermer avec la touche Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isOpen) {
+        this.close();
+      }
+    });
+
+    // Fermer si on redimensionne au-delà du breakpoint mobile
+    window.addEventListener('resize', utils.throttle(() => {
+      if (window.innerWidth >= 1024 && this.isOpen) {
+        this.close();
+      }
+    }, 100));
   },
 
   toggle() {
-    DOM.navMenu.classList.toggle('is-open');
-    const isOpen = DOM.navMenu.classList.contains('is-open');
-    DOM.navToggle.setAttribute('aria-expanded', isOpen);
+    this.isOpen = !this.isOpen;
+    this.updateState();
+  },
+
+  open() {
+    this.isOpen = true;
+    this.updateState();
+  },
+
+  close() {
+    this.isOpen = false;
+    this.updateState();
+  },
+
+  updateState() {
+    DOM.navMenu.classList.toggle('is-open', this.isOpen);
+    DOM.navToggle.setAttribute('aria-expanded', this.isOpen);
+    DOM.navToggle.setAttribute('aria-label', this.isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.classList.toggle('nav-open', this.isOpen);
   },
 };
 
@@ -159,6 +204,7 @@ const PlacesTabs = {
     this.elements.label = document.getElementById('places-content-label');
     this.elements.title = document.getElementById('places-content-title');
     this.elements.text = document.getElementById('places-content-text');
+    this.elements.tabpanel = document.getElementById('tabpanel-places');
 
     // Vérifier que les éléments existent
     if (!this.elements.tabs.length || !this.elements.image) return;
@@ -166,7 +212,46 @@ const PlacesTabs = {
     // Ajouter les event listeners sur les onglets
     this.elements.tabs.forEach(tab => {
       tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
+      tab.addEventListener('keydown', (e) => this.handleKeyDown(e, tab));
     });
+  },
+
+  handleKeyDown(e, currentTab) {
+    const tabs = Array.from(this.elements.tabs);
+    const currentIndex = tabs.indexOf(currentTab);
+    let newIndex;
+
+    switch (e.key) {
+      case 'ArrowRight':
+      case 'ArrowDown':
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % tabs.length;
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        break;
+      case 'Home':
+        e.preventDefault();
+        newIndex = 0;
+        break;
+      case 'End':
+        e.preventDefault();
+        newIndex = tabs.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    // Mettre à jour les tabindex
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('tabindex', i === newIndex ? '0' : '-1');
+    });
+
+    // Focus et activation du nouvel onglet
+    tabs[newIndex].focus();
+    this.switchTab(tabs[newIndex].dataset.tab);
   },
 
   switchTab(tabId) {
@@ -177,12 +262,25 @@ const PlacesTabs = {
     const newData = this.data[tabId];
     if (!newData) return;
 
+    // Map des IDs de tabs
+    const tabIdMap = {
+      starcourt: 'tab-starcourt',
+      lab: 'tab-lab',
+      forest: 'tab-forest',
+    };
+
     // Mettre à jour l'onglet actif visuellement
     this.elements.tabs.forEach(tab => {
       const isActive = tab.dataset.tab === tabId;
       tab.classList.toggle('places__tab--active', isActive);
       tab.setAttribute('aria-selected', isActive);
+      tab.setAttribute('tabindex', isActive ? '0' : '-1');
     });
+
+    // Mettre à jour le tabpanel
+    if (this.elements.tabpanel) {
+      this.elements.tabpanel.setAttribute('aria-labelledby', tabIdMap[tabId]);
+    }
 
     // Animation fade out
     this.elements.image.classList.add('is-fading');
@@ -260,9 +358,11 @@ const ExperienceCards = {
  */
 const FAQAccordion = {
   items: null,
+  questions: null,
 
   init() {
     this.items = document.querySelectorAll('.faq__item');
+    this.questions = document.querySelectorAll('.faq__question');
     
     if (!this.items.length) return;
 
@@ -271,8 +371,44 @@ const FAQAccordion = {
       const question = item.querySelector('.faq__question');
       if (question) {
         question.addEventListener('click', () => this.toggleItem(item));
+        question.addEventListener('keydown', (e) => this.handleKeyDown(e, question));
       }
     });
+  },
+
+  handleKeyDown(e, currentQuestion) {
+    const questions = Array.from(this.questions);
+    const currentIndex = questions.indexOf(currentQuestion);
+    let newIndex;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % questions.length;
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + questions.length) % questions.length;
+        break;
+      case 'Home':
+        e.preventDefault();
+        newIndex = 0;
+        break;
+      case 'End':
+        e.preventDefault();
+        newIndex = questions.length - 1;
+        break;
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        this.toggleItem(currentQuestion.closest('.faq__item'));
+        return;
+      default:
+        return;
+    }
+
+    // Focus sur la nouvelle question
+    questions[newIndex].focus();
   },
 
   toggleItem(clickedItem) {

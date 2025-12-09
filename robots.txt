@@ -1,0 +1,31 @@
+# robots.txt - Guide de Hawkins
+# https://guide-hawkins.com/
+
+# Autoriser tous les robots
+User-agent: *
+Allow: /
+
+# Bloquer les dossiers non pertinents pour le SEO
+Disallow: /references/
+Disallow: /.cursor/
+
+# Sitemap
+Sitemap: https://guide-hawkins.com/sitemap.xml
+
+# Crawler-specific rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Bloquer les robots malveillants connus
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
