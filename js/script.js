@@ -533,7 +533,7 @@ const FAQAccordion = {
 const ScrollAnimations = {
   init() {
     // Sélecteurs des sections à animer
-    const animatedSelectors = '.places, .experience, .faq, .cta, .newsletter, .site-footer, .lieux-emblematiques, .starcourt, .laboratoire, .byers, .college, .foret, .cta-expedition';
+    const animatedSelectors = '.places, .experience, .faq, .cta, .newsletter, .site-footer, .lieux-emblematiques, .starcourt, .laboratoire, .byers, .college, .foret, .cta-expedition, .gardiens, .temoignages, .cta-residents';
 
     // Vérifier si Intersection Observer est supporté
     if (!('IntersectionObserver' in window)) {
@@ -570,6 +570,125 @@ const ScrollAnimations = {
 };
 
 // ===================================
+// SLIDER TÉMOIGNAGES (Page Résidents)
+// ===================================
+
+/**
+ * Gestion du slider de témoignages sur la page résidents
+ * Permet de naviguer entre les différents témoignages
+ */
+const TestimonialSlider = {
+  slides: null,
+  dots: null,
+  prevBtn: null,
+  nextBtn: null,
+  currentSlide: 0,
+  autoplayInterval: null,
+
+  init() {
+    // Récupérer les éléments du DOM
+    this.slides = document.querySelectorAll('.testimonial-slide');
+    this.dots = document.querySelectorAll('.video-dots .dot');
+    this.prevBtn = document.querySelector('.slider-arrow.prev');
+    this.nextBtn = document.querySelector('.slider-arrow.next');
+
+    // Vérifier que les éléments existent (on est sur la page résidents)
+    if (!this.slides.length) return;
+
+    this.bindEvents();
+    this.startAutoplay();
+  },
+
+  bindEvents() {
+    // Boutons précédent/suivant
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => {
+        this.showSlide(this.currentSlide - 1);
+        this.resetAutoplay();
+      });
+    }
+
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => {
+        this.showSlide(this.currentSlide + 1);
+        this.resetAutoplay();
+      });
+    }
+
+    // Clic sur les dots
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        this.showSlide(index);
+        this.resetAutoplay();
+      });
+    });
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+      const slider = document.querySelector('.testimonial-slider');
+      if (!slider) return;
+
+      // Vérifier si le focus est dans le slider
+      if (slider.contains(document.activeElement) ||
+        document.activeElement.closest('.temoignages')) {
+        if (e.key === 'ArrowLeft') {
+          this.showSlide(this.currentSlide - 1);
+          this.resetAutoplay();
+        } else if (e.key === 'ArrowRight') {
+          this.showSlide(this.currentSlide + 1);
+          this.resetAutoplay();
+        }
+      }
+    });
+  },
+
+  showSlide(index) {
+    // Boucler sur les slides
+    if (index >= this.slides.length) index = 0;
+    if (index < 0) index = this.slides.length - 1;
+
+    // Cacher tous les slides et mettre à jour aria-hidden
+    this.slides.forEach(slide => {
+      slide.classList.remove('active');
+      slide.setAttribute('aria-hidden', 'true');
+    });
+
+    // Désactiver tous les dots
+    this.dots.forEach(dot => {
+      dot.classList.remove('active');
+      dot.setAttribute('aria-selected', 'false');
+    });
+
+    // Afficher le slide actuel
+    this.slides[index].classList.add('active');
+    this.slides[index].setAttribute('aria-hidden', 'false');
+
+    // Activer le dot correspondant
+    if (this.dots[index]) {
+      this.dots[index].classList.add('active');
+      this.dots[index].setAttribute('aria-selected', 'true');
+    }
+
+    this.currentSlide = index;
+  },
+
+  startAutoplay() {
+    // Changer de slide toutes les 6 secondes
+    this.autoplayInterval = setInterval(() => {
+      this.showSlide(this.currentSlide + 1);
+    }, 6000);
+  },
+
+  resetAutoplay() {
+    // Réinitialiser l'autoplay après une interaction utilisateur
+    if (this.autoplayInterval) {
+      clearInterval(this.autoplayInterval);
+    }
+    this.startAutoplay();
+  }
+};
+
+// ===================================
 // INITIALISATION
 // ===================================
 
@@ -584,6 +703,7 @@ function init() {
   Particles.init();
   CounterAnimation.init();
   AproposAnimations.init();
+  TestimonialSlider.init();
 }
 
 /**
@@ -708,6 +828,11 @@ const Particles = {
     // Initialiser particles.js pour la section Forêt (page Lieux)
     if (document.getElementById('particles-foret')) {
       particlesJS('particles-foret', this.config);
+    }
+
+    // Initialiser particles.js pour la section Gardiens (page Résidents)
+    if (document.getElementById('particles-gardiens')) {
+      particlesJS('particles-gardiens', this.config);
     }
   },
 };
