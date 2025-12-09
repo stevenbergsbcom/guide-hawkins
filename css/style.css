@@ -75,9 +75,6 @@
   --transition-base: 300ms ease;
   --transition-slow: 500ms ease;
 
-  /* Transition optimisée pour animations de scroll */
-  --transition-scroll: opacity 0.5s ease, transform 0.5s ease;
-
   /* Ombres */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.5);
@@ -719,7 +716,10 @@ p {
 }
 
 .hero__title--glow {
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
   animation:
     heroFadeInUp 1s ease forwards,
     heroGlowPulse 3s ease-in-out 1.5s infinite;
@@ -818,7 +818,10 @@ p {
   font-size: var(--fs-3xl);
   font-weight: 700;
   color: var(--color-white);
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .places__description {
@@ -1004,7 +1007,10 @@ p {
   color: var(--color-white);
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .experience__grid {
@@ -1085,7 +1091,10 @@ p {
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .faq__subtitle {
@@ -1232,15 +1241,13 @@ p {
 .cta__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .cta__figure {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 /* États visibles */
@@ -1266,7 +1273,10 @@ p {
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .cta__text {
@@ -1334,7 +1344,7 @@ p {
   border-radius: var(--radius-lg);
   border: 2px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .cta__image:hover {
@@ -1393,7 +1403,10 @@ p {
   font-weight: 700;
   color: var(--color-white);
   text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .newsletter__text {
@@ -1466,8 +1479,7 @@ p {
   background-color: var(--color-bg-primary);
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .site-footer.is-visible {
@@ -1616,22 +1628,19 @@ p {
 .places__header {
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .places__tabs {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.15s;
 }
 
 .places__grid {
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.3s;
 }
 
 .places.is-visible .places__header {
@@ -1653,22 +1662,19 @@ p {
 .experience__title {
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .experience__figure {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .experience__content {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.3s;
 }
 
 .experience.is-visible .experience__title {
@@ -1690,22 +1696,19 @@ p {
 .faq__header {
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .faq__list {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .faq__help {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.4s;
 }
 
 .faq.is-visible .faq__header {
@@ -1727,8 +1730,7 @@ p {
 .newsletter__content {
   opacity: 0;
   transform: translateY(40px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .newsletter.is-visible .newsletter__content {
@@ -1740,8 +1742,7 @@ p {
 .lieux-emblematiques__title {
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .lieux-emblematiques.is-visible .lieux-emblematiques__title {
@@ -1752,8 +1753,7 @@ p {
 .lieux-emblematiques__figure {
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .lieux-emblematiques.is-visible .lieux-emblematiques__figure {
@@ -1764,8 +1764,7 @@ p {
 .lieux-grid {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.3s;
 }
 
 .lieux-emblematiques.is-visible .lieux-grid {
@@ -1777,8 +1776,7 @@ p {
 .starcourt__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .starcourt.is-visible .starcourt__content {
@@ -1789,8 +1787,7 @@ p {
 .starcourt__gallery {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .starcourt.is-visible .starcourt__gallery {
@@ -1802,8 +1799,7 @@ p {
 .laboratoire__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .laboratoire.is-visible .laboratoire__content {
@@ -1814,8 +1810,7 @@ p {
 .laboratoire__figure {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .laboratoire.is-visible .laboratoire__figure {
@@ -1827,8 +1822,7 @@ p {
 .byers__content {
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .byers.is-visible .byers__content {
@@ -1839,8 +1833,7 @@ p {
 .byers__image-container {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .byers.is-visible .byers__image-container {
@@ -1997,8 +1990,7 @@ button:focus-visible {
 .fondation__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .fondation__content.visible {
@@ -2031,8 +2023,7 @@ button:focus-visible {
 .fondation__figure {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .fondation__figure.visible {
@@ -2045,7 +2036,7 @@ button:focus-visible {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .fondation__image:hover {
@@ -2087,8 +2078,7 @@ button:focus-visible {
 .chiffres__intro {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .chiffres__intro.visible {
@@ -2108,8 +2098,7 @@ button:focus-visible {
 .chiffres__description {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .chiffres__description.visible {
@@ -2136,8 +2125,7 @@ button:focus-visible {
   align-items: center;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.4s;
 }
 
 .stats-grid.visible {
@@ -2193,8 +2181,7 @@ button:focus-visible {
   margin: 0 auto 60px;
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .histoire__header.visible {
@@ -2256,7 +2243,7 @@ button:focus-visible {
   position: relative;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: all 0.6s ease;
   transition-delay: var(--delay, 0s);
 }
 
@@ -2272,7 +2259,7 @@ button:focus-visible {
   overflow: hidden;
   margin-bottom: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .timeline-image img {
@@ -2353,7 +2340,10 @@ button:focus-visible {
   color: var(--color-white);
   text-align: center;
   margin-bottom: 60px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .unique__grid {
@@ -2366,8 +2356,7 @@ button:focus-visible {
   flex: 0 0 45%;
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .unique__figure.visible {
@@ -2380,7 +2369,7 @@ button:focus-visible {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .unique__image:hover {
@@ -2395,8 +2384,7 @@ button:focus-visible {
   gap: 10px;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .unique__content.visible {
@@ -2456,8 +2444,7 @@ button:focus-visible {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .lieux-emblematiques__title.visible {
@@ -2477,8 +2464,7 @@ button:focus-visible {
   margin: 0;
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .lieux-emblematiques__figure.visible {
@@ -2493,7 +2479,7 @@ button:focus-visible {
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .lieux-emblematiques__image:hover {
@@ -2509,8 +2495,7 @@ button:focus-visible {
   gap: 20px;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .lieux-grid.visible {
@@ -2635,8 +2620,7 @@ button:focus-visible {
 .starcourt__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .starcourt__content.visible {
@@ -2673,8 +2657,7 @@ button:focus-visible {
   gap: 15px;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .starcourt__gallery.visible {
@@ -2692,7 +2675,7 @@ button:focus-visible {
   object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .gallery-main img:hover {
@@ -2716,7 +2699,7 @@ button:focus-visible {
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
   cursor: pointer;
 }
 
@@ -2742,8 +2725,7 @@ button:focus-visible {
 .laboratoire__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .laboratoire__content.visible {
@@ -2778,8 +2760,7 @@ button:focus-visible {
   margin: 0;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .laboratoire__figure.visible {
@@ -2815,7 +2796,7 @@ button:focus-visible {
   display: block;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .lab-image:hover img {
@@ -2841,8 +2822,7 @@ button:focus-visible {
   margin-bottom: 60px;
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .byers__content.visible {
@@ -2886,8 +2866,7 @@ button:focus-visible {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .byers__image-container.visible {
@@ -2899,7 +2878,7 @@ button:focus-visible {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .byers__image-container:hover img {
@@ -2915,11 +2894,14 @@ button:focus-visible {
   height: 100%;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 30%, rgba(229, 9, 20, 0.25) 0%, transparent 12%),
-    radial-gradient(circle at 60% 50%, rgba(10, 132, 255, 0.25) 0%, transparent 10%),
-    radial-gradient(circle at 80% 70%, rgba(255, 255, 0, 0.25) 0%, transparent 12%);
-  /* Animation désactivée pour performances - lumières statiques */
-  opacity: 0.4;
+    radial-gradient(circle at 20% 30%, rgba(229, 9, 20, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at 40% 50%, rgba(10, 132, 255, 0.3) 0%, transparent 8%),
+    radial-gradient(circle at 60% 25%, rgba(255, 255, 0, 0.3) 0%, transparent 10%),
+    radial-gradient(circle at 80% 60%, rgba(0, 255, 0, 0.3) 0%, transparent 8%),
+    radial-gradient(circle at 15% 70%, rgba(255, 0, 255, 0.3) 0%, transparent 8%),
+    radial-gradient(circle at 70% 80%, rgba(255, 165, 0, 0.3) 0%, transparent 10%);
+  animation: flickerLights 3s infinite alternate;
+  opacity: 0.5;
 }
 
 @keyframes flickerLights {
@@ -4167,8 +4149,7 @@ button:focus-visible {
   margin: 0;
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .college__figure.visible,
@@ -4182,7 +4163,7 @@ button:focus-visible {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .college__figure img:hover {
@@ -4194,8 +4175,7 @@ button:focus-visible {
 .college__content {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .college__content.visible,
@@ -4281,8 +4261,7 @@ button:focus-visible {
   margin-bottom: 60px;
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .foret__content.visible,
@@ -4326,8 +4305,7 @@ button:focus-visible {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .foret__image-container.visible,
@@ -4352,7 +4330,7 @@ button:focus-visible {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .foret__image-container:hover img {
@@ -4389,8 +4367,7 @@ button:focus-visible {
 .cta-expedition__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .cta-expedition__content.visible,
@@ -4469,8 +4446,7 @@ button:focus-visible {
   margin: 0;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .cta-expedition__figure.visible,
@@ -4484,7 +4460,7 @@ button:focus-visible {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .cta-expedition__figure img:hover {
@@ -4710,8 +4686,7 @@ button:focus-visible {
 .gardiens__intro {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .gardiens__intro.visible,
@@ -4732,8 +4707,7 @@ button:focus-visible {
 .gardiens__description {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .gardiens__description.visible,
@@ -4843,8 +4817,7 @@ button:focus-visible {
   flex-wrap: wrap;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.4s;
 }
 
 .gardiens__actions.visible,
@@ -4874,8 +4847,7 @@ button:focus-visible {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .testimonial-video.visible,
@@ -4888,7 +4860,7 @@ button:focus-visible {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .testimonial-video:hover img {
@@ -5014,8 +4986,7 @@ button:focus-visible {
   height: 100%;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .testimonial-content.visible,
@@ -5140,8 +5111,7 @@ button:focus-visible {
 .cta-residents__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .cta-residents__content.visible,
@@ -5177,8 +5147,7 @@ button:focus-visible {
   margin: 0;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .cta-residents__figure.visible,
@@ -5192,7 +5161,7 @@ button:focus-visible {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .cta-residents__figure img:hover {
@@ -5487,8 +5456,7 @@ button:focus-visible {
   margin-bottom: 60px;
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .regles__header.visible,
@@ -5529,7 +5497,7 @@ button:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
@@ -5609,7 +5577,7 @@ button:focus-visible {
   font-size: 3rem;
   margin-bottom: 25px;
   filter: grayscale(100%);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .rule-card:hover .rule-icon {
@@ -5640,8 +5608,7 @@ button:focus-visible {
   flex-wrap: wrap;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.4s;
 }
 
 .regles__actions.visible,
@@ -5678,8 +5645,7 @@ button:focus-visible {
   margin-bottom: 50px;
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .faq__header.visible,
@@ -5801,8 +5767,7 @@ button:focus-visible {
   border-radius: 16px;
   opacity: 0;
   transform: translateY(30px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .faq-contact.visible,
@@ -5872,8 +5837,7 @@ button:focus-visible {
 .cta-aventure__content {
   opacity: 0;
   transform: translateX(-50px);
-  transition: var(--transition-scroll);
-  will-change: opacity, transform;
+  transition: all 0.8s ease;
 }
 
 .cta-aventure__content.visible,
@@ -5909,8 +5873,7 @@ button:focus-visible {
   margin: 0;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-  will-change: opacity, transform;
+  transition: all 0.8s ease 0.2s;
 }
 
 .cta-aventure__figure.visible,
@@ -5924,7 +5887,7 @@ button:focus-visible {
   height: auto;
   border-radius: 16px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .cta-aventure__figure img:hover {
