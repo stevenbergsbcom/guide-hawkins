@@ -533,7 +533,7 @@ const FAQAccordion = {
 const ScrollAnimations = {
   init() {
     // Sélecteurs des sections à animer
-    const animatedSelectors = '.places, .experience, .faq, .cta, .newsletter, .site-footer, .lieux-emblematiques, .starcourt, .laboratoire, .byers, .college, .foret, .cta-expedition, .gardiens, .temoignages, .cta-residents';
+    const animatedSelectors = '.places, .experience, .faq, .cta, .newsletter, .site-footer, .lieux-emblematiques, .starcourt, .laboratoire, .byers, .college, .foret, .cta-expedition, .gardiens, .temoignages, .cta-residents, .regles, .faq-section, .cta-aventure';
 
     // Vérifier si Intersection Observer est supporté
     if (!('IntersectionObserver' in window)) {
@@ -567,6 +567,111 @@ const ScrollAnimations = {
       observer.observe(section);
     });
   },
+};
+
+// ===================================
+// ACCORDÉON FAQ CONSEILS (Page Conseils)
+// ===================================
+
+/**
+ * Gestion de l'accordéon FAQ sur la page conseils
+ * Permet d'ouvrir/fermer les questions FAQ
+ */
+const ConseilsFAQ = {
+  items: null,
+  questions: null,
+
+  init() {
+    // Récupérer les éléments du DOM
+    this.items = document.querySelectorAll('.faq-item');
+    this.questions = document.querySelectorAll('.faq-question');
+
+    // Vérifier que les éléments existent (on est sur la page conseils)
+    if (!this.items.length) return;
+
+    this.bindEvents();
+  },
+
+  bindEvents() {
+    // Ajouter les event listeners sur chaque question
+    this.items.forEach((item, index) => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      if (question && answer) {
+        // Ajouter un id unique si nécessaire
+        if (!question.id) {
+          question.id = `faq-question-${index + 1}`;
+        }
+        if (!answer.id) {
+          answer.id = `faq-answer-${index + 1}`;
+        }
+
+        question.addEventListener('click', () => this.toggleItem(item));
+        question.addEventListener('keydown', (e) => this.handleKeyDown(e, question, index));
+      }
+    });
+  },
+
+  toggleItem(item) {
+    const isActive = item.classList.contains('active');
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+
+    // Fermer tous les autres items
+    this.items.forEach(otherItem => {
+      if (otherItem !== item) {
+        otherItem.classList.remove('active');
+        const otherQuestion = otherItem.querySelector('.faq-question');
+        const otherAnswer = otherItem.querySelector('.faq-answer');
+        if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+        if (otherAnswer) otherAnswer.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Toggle l'item actuel
+    if (isActive) {
+      item.classList.remove('active');
+      if (question) question.setAttribute('aria-expanded', 'false');
+      if (answer) answer.setAttribute('aria-hidden', 'true');
+    } else {
+      item.classList.add('active');
+      if (question) question.setAttribute('aria-expanded', 'true');
+      if (answer) answer.setAttribute('aria-hidden', 'false');
+    }
+  },
+
+  handleKeyDown(e, currentQuestion, currentIndex) {
+    const questions = Array.from(this.questions);
+    let newIndex;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % questions.length;
+        questions[newIndex].focus();
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + questions.length) % questions.length;
+        questions[newIndex].focus();
+        break;
+      case 'Home':
+        e.preventDefault();
+        questions[0].focus();
+        break;
+      case 'End':
+        e.preventDefault();
+        questions[questions.length - 1].focus();
+        break;
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        const item = currentQuestion.closest('.faq-item');
+        if (item) this.toggleItem(item);
+        break;
+    }
+  }
 };
 
 // ===================================
@@ -704,6 +809,7 @@ function init() {
   CounterAnimation.init();
   AproposAnimations.init();
   TestimonialSlider.init();
+  ConseilsFAQ.init();
 }
 
 /**
@@ -833,6 +939,16 @@ const Particles = {
     // Initialiser particles.js pour la section Gardiens (page Résidents)
     if (document.getElementById('particles-gardiens')) {
       particlesJS('particles-gardiens', this.config);
+    }
+
+    // Initialiser particles.js pour la section Règles (page Conseils)
+    if (document.getElementById('particles-regles')) {
+      particlesJS('particles-regles', this.config);
+    }
+
+    // Initialiser particles.js pour la section FAQ (page Conseils)
+    if (document.getElementById('particles-faq')) {
+      particlesJS('particles-faq', this.config);
     }
   },
 };
