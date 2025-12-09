@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez Hawkins, Indiana - Une petite ville avec de grands mystères. Explorez les lieux emblématiques et vivez une expérience inoubliable.">
+  <meta name="author" content="Guide de Hawkins">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Guide de Hawkins - Bienvenue à Hawkins, Indiana">
+  <meta property="og:description" content="Une petite ville avec de grands mystères. Explorez les lieux qui ont marqué notre histoire.">
+  <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Bienvenue à Hawkins, Indiana | Guide de Hawkins</title>
+</head>
+
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+  <!-- Header -->
+  <header class="site-header site-header--transparent">
+    <div class="container">
+      <nav class="nav-main" aria-label="Navigation principale">
+        <a href="index.html" class="nav-logo">
+          <img src="images/StrangerThingslogo.png" alt="Stranger Things - Guide de Hawkins" class="nav-logo__image">
+        </a>
+
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link nav-link--active">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a href="lieux.html" class="nav-link">Lieux</a>
+          </li>
+          <li class="nav-item">
+            <a href="residents.html" class="nav-link">Résidents</a>
+          </li>
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-link--dropdown" aria-expanded="false">
+              Plus
+              <svg class="nav-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </button>
+            <ul class="nav-dropdown">
+              <li><a href="apropos.html" class="nav-dropdown__link">À propos</a></li>
+              <li><a href="conseils.html" class="nav-dropdown__link">Conseils</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#" class="btn btn--outline btn--sm">Français</a>
+          <a href="lieux.html" class="btn btn--white btn--sm">Visiter</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__background">
+        <img src="images/hero-hawkins.webp" alt="" loading="eager" class="hero__image">
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="container">
+        <div class="hero__content">
+          <h1 class="hero__title">Bienvenue à Hawkins, Indiana</h1>
+          <p class="hero__subtitle">Une petite ville avec de grands mystères. Explorez les lieux qui ont marqué notre histoire et découvrez l'incroyable charme qui rend cet endroit inoubliable.</p>
+          <div class="hero__actions">
+            <a href="lieux.html" class="btn btn--white">Découvrir</a>
+            <a href="apropos.html" class="btn btn--ghost">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lieux Section -->
+    <section class="places" id="places">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <span class="section-label">Attractions</span>
+          <h2 class="section-title">Lieux à ne pas manquer</h2>
+          <p class="section-description">Hawkins regorge de sites fascinants qui racontent l'histoire de notre communauté. Chaque lieu possède son propre charme et ses secrets bien gardés.</p>
+        </header>
+
+        <div class="places__actions">
+          <a href="lieux.html" class="btn btn--primary">Explorer</a>
+          <a href="lieux.html" class="btn btn--link">Voir plus →</a>
+        </div>
+
+        <nav class="places__tabs" aria-label="Navigation des lieux">
+          <button class="places__tab places__tab--active" data-tab="starcourt">Starcourt Mall</button>
+          <button class="places__tab" data-tab="lab">Hawkins Lab</button>
+          <button class="places__tab" data-tab="forest">Forêt de Hawkins</button>
+        </nav>
+
+        <div class="places__showcase">
+          <figure class="places__figure">
+            <img src="https://picsum.photos/800/500?random=3" alt="Vue du Starcourt Mall" class="places__image" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Heart of Hawkins Section -->
+    <section class="heart">
+      <div class="container">
+        <div class="heart__grid">
+          <div class="heart__content">
+            <span class="section-label">Centre commercial</span>
+            <h2 class="section-title">Le cœur battant de Hawkins</h2>
+            <p class="heart__text">Starcourt Mall était autrefois le lieu de rendez-vous préféré des jeunes de la ville. Ses arcades, ses restaurants et ses boutiques incarnaient l'esprit des années 80.</p>
+            <div class="heart__actions">
+              <a href="lieux.html" class="btn btn--primary">Visiter</a>
+              <a href="lieux.html" class="btn btn--link">Détails →</a>
+            </div>
+          </div>
+          <figure class="heart__figure">
+            <img src="https://picsum.photos/600/400?random=4" alt="Intérieur du Starcourt Mall" class="heart__image" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <div class="features__grid">
+          <div class="features__content">
+            <article class="feature">
+              <h3 class="feature__title">Expérience authentique</h3>
+              <p class="feature__text">Hawkins offre une plongée véritable dans les années 80. Les bâtiments, la musique et l'atmosphère vous transporteront dans une époque révolue.</p>
+            </article>
+            <article class="feature">
+              <h3 class="feature__title">Histoires captivantes</h3>
+              <p class="feature__text">Chaque coin de Hawkins cache une histoire. Des incidents locaux aux événements historiques, découvrez ce qui rend cette ville unique et mystérieuse.</p>
+            </article>
+            <article class="feature">
+              <h3 class="feature__title">Communauté accueillante</h3>
+              <p class="feature__text">Les habitants de Hawkins sont fiers de partager leur ville avec les visiteurs. Vous trouverez ici une hospitalité sincère et des rencontres authentiques.</p>
+            </article>
+          </div>
+          <figure class="features__figure">
+            <img src="https://picsum.photos/500/600?random=5" alt="Scène de la vie à Hawkins" class="features__image" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <header class="section-header section-header--center">
+          <h2 class="section-title">Questions</h2>
+          <p class="section-description">Trouvez les réponses aux questions les plus fréquemment posées par nos visiteurs.</p>
+        </header>
+
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__question">
+              <span>Hawkins est-elle sûre ?</span>
+              <svg class="faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <div class="faq__answer">
+              <p>Hawkins est une destination sûre pour les touristes. Bien que notre histoire soit complexe, la ville accueille chaleureusement les visiteurs. Suivez simplement nos conseils de sécurité et vous passerez un excellent séjour.</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">
+              <span>Quand visiter Hawkins ?</span>
+              <svg class="faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <div class="faq__answer">
+              <p>L'automne est la meilleure saison pour visiter Hawkins. Les températures sont agréables et l'atmosphère est particulièrement mystérieuse. L'hiver apporte aussi son charme avec les décorations festives.</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">
+              <span>Où se loger à Hawkins ?</span>
+              <svg class="faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <div class="faq__answer">
+              <p>Hawkins propose plusieurs options d'hébergement, des motels classiques aux auberges charmantes. Chaque établissement offre une expérience authentique des années 80.</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">
+              <span>Y a-t-il des phénomènes étranges ?</span>
+              <svg class="faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <div class="faq__answer">
+              <p>Hawkins a connu des événements inhabituels par le passé. Aujourd'hui, la ville est calme et stable. Les visiteurs peuvent explorer librement sans crainte.</p>
+            </div>
+          </details>
+
+          <details class="faq__item">
+            <summary class="faq__question">
+              <span>Comment se déplacer en ville ?</span>
+              <svg class="faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </summary>
+            <div class="faq__answer">
+              <p>Une voiture est recommandée pour explorer Hawkins. Les transports en commun sont limités, mais la ville est facilement navigable. Les vélos sont aussi une excellente option.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="faq__help">
+          <h3 class="faq__help-title">Besoin d'aide supplémentaire ?</h3>
+          <p class="faq__help-text">Notre équipe est prête à répondre à vos questions.</p>
+          <a href="conseils.html" class="btn btn--outline">Contacter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="cta__background">
+        <img src="https://picsum.photos/1920/600?random=6" alt="" loading="lazy" class="cta__bg-image">
+        <div class="cta__overlay"></div>
+      </div>
+      <div class="container">
+        <div class="cta__content">
+          <h2 class="cta__title">Explorez les secrets <span class="cta__title-break">de Hawkins</span></h2>
+          <p class="cta__text">Les lieux emblématiques vous attendent. Venez découvrir ce qui rend cette ville inoubliable.</p>
+          <div class="cta__actions">
+            <a href="lieux.html" class="btn btn--outline">Explorer</a>
+            <a href="conseils.html" class="btn btn--outline">Planifier</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+      <div class="container">
+        <div class="newsletter__content">
+          <h2 class="newsletter__title">Restez informé des <span class="text-accent">nouvelles</span></h2>
+          <p class="newsletter__text">Inscrivez-vous pour recevoir les dernières nouvelles à jour et des offres exclusives de Hawkins.</p>
+          <form class="newsletter__form" action="#" method="post">
+            <div class="newsletter__input-group">
+              <label for="newsletter-email" class="visually-hidden">Adresse email</label>
+              <input type="email" id="newsletter-email" name="email" placeholder="Votre adresse email" required class="newsletter__input">
+              <button type="submit" class="btn btn--primary newsletter__btn">S'inscrire</button>
+            </div>
+          </form>
+        </div>
+        <div class="newsletter__images">
+          <img src="https://picsum.photos/300/400?random=7" alt="Scène de Hawkins" class="newsletter__image" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Footer Brand -->
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <img src="images/StrangerThingslogo.png" alt="Stranger Things - Guide de Hawkins" class="footer__logo-image">
+          </a>
+          <address class="footer__address">
+            <p><strong>Adresse</strong></p>
+            <p>Hawkins Town Hall, Main Street<br>Hawkins, Indiana</p>
+          </address>
+          <div class="footer__contact">
+            <p><strong>Téléphone</strong></p>
+            <p><a href="tel:+15551234567">555 info@hawkinstourism.com</a></p>
+          </div>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              </svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer Links -->
+        <nav class="footer__nav" aria-label="Liens du pied de page">
+          <div class="footer__col">
+            <h4 class="footer__heading">Lieux emblématiques</h4>
+            <ul class="footer__list">
+              <li><a href="lieux.html" class="footer__link">Starcourt Mall</a></li>
+              <li><a href="lieux.html" class="footer__link">Hawkins Lab</a></li>
+              <li><a href="lieux.html" class="footer__link">Forêt de Hawkins</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Résidents notables</h4>
+            <ul class="footer__list">
+              <li><a href="residents.html" class="footer__link">Famille Byers</a></li>
+              <li><a href="residents.html" class="footer__link">Famille Wheeler</a></li>
+              <li><a href="residents.html" class="footer__link">Chef Hopper</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Conseils aux visiteurs</h4>
+            <ul class="footer__list">
+              <li><a href="conseils.html" class="footer__link">Sécurité</a></li>
+              <li><a href="conseils.html" class="footer__link">Hébergement</a></li>
+              <li><a href="conseils.html" class="footer__link">Transport</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">À propos de Hawkins</h4>
+            <ul class="footer__list">
+              <li><a href="apropos.html" class="footer__link">Histoire</a></li>
+              <li><a href="apropos.html" class="footer__link">Culture</a></li>
+              <li><a href="apropos.html" class="footer__link">Événements</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Nous contacter</h4>
+            <ul class="footer__list">
+              <li><a href="#" class="footer__link">Horaires d'ouverture</a></li>
+              <li><a href="#" class="footer__link">Événements locaux</a></li>
+              <li><a href="#" class="footer__link">Guide gratuit</a></li>
+              <li><a href="#" class="footer__link">Suivez-nous</a></li>
+            </ul>
+          </div>
+        </nav>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <p class="footer__copyright">Politique de confidentialité</p>
+        <nav class="footer__legal" aria-label="Liens légaux">
+          <a href="#" class="footer__legal-link">Conditions d'utilisation</a>
+          <a href="#" class="footer__legal-link">Paramètres des cookies</a>
+          <a href="#" class="footer__legal-link">Préférences cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
