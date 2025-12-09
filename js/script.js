@@ -354,6 +354,99 @@ const ExperienceCards = {
 };
 
 /**
+ * Gestion des cartes Unique avec effet hover et navigation clavier (page À propos)
+ */
+const UniqueCards = {
+  cards: null,
+  defaultCard: null,
+  currentIndex: 0,
+
+  init() {
+    this.cards = document.querySelectorAll('.unique__card');
+    
+    if (!this.cards.length) return;
+
+    // Le premier article est actif par défaut
+    this.defaultCard = this.cards[0];
+
+    // Rendre les cartes focusables
+    this.cards.forEach((card, index) => {
+      card.setAttribute('tabindex', index === 0 ? '0' : '-1');
+      card.addEventListener('mouseenter', () => this.handleMouseEnter(card));
+      card.addEventListener('mouseleave', () => this.handleMouseLeave());
+      card.addEventListener('focus', () => this.handleFocus(card, index));
+      card.addEventListener('keydown', (e) => this.handleKeyDown(e, index));
+    });
+  },
+
+  handleMouseEnter(hoveredCard) {
+    // Retirer la classe active de toutes les cartes
+    this.cards.forEach(card => {
+      card.classList.remove('unique__card--active');
+    });
+    
+    // Ajouter la classe active sur la carte survolée
+    hoveredCard.classList.add('unique__card--active');
+  },
+
+  handleMouseLeave() {
+    // Retirer la classe active de toutes les cartes
+    this.cards.forEach(card => {
+      card.classList.remove('unique__card--active');
+    });
+    
+    // Remettre la classe active sur la première carte
+    if (this.defaultCard) {
+      this.defaultCard.classList.add('unique__card--active');
+    }
+  },
+
+  handleFocus(card, index) {
+    this.currentIndex = index;
+    // Retirer la classe active de toutes les cartes
+    this.cards.forEach(c => c.classList.remove('unique__card--active'));
+    // Ajouter la classe active sur la carte focusée
+    card.classList.add('unique__card--active');
+  },
+
+  handleKeyDown(e, currentIndex) {
+    const cardsArray = Array.from(this.cards);
+    let newIndex = currentIndex;
+
+    switch (e.key) {
+      case 'ArrowDown':
+      case 'ArrowRight':
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % cardsArray.length;
+        break;
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + cardsArray.length) % cardsArray.length;
+        break;
+      case 'Home':
+        e.preventDefault();
+        newIndex = 0;
+        break;
+      case 'End':
+        e.preventDefault();
+        newIndex = cardsArray.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    // Mettre à jour les tabindex
+    cardsArray.forEach((card, i) => {
+      card.setAttribute('tabindex', i === newIndex ? '0' : '-1');
+    });
+
+    // Focus sur la nouvelle carte
+    cardsArray[newIndex].focus();
+  },
+};
+
+/**
  * Gestion de l'accordéon FAQ
  */
 const FAQAccordion = {
@@ -485,9 +578,12 @@ function init() {
   Navigation.init();
   PlacesTabs.init();
   ExperienceCards.init();
+  UniqueCards.init();
   FAQAccordion.init();
   ScrollAnimations.init();
   Particles.init();
+  CounterAnimation.init();
+  AproposAnimations.init();
 }
 
 /**
@@ -593,6 +689,94 @@ const Particles = {
     if (document.getElementById('particles-questions')) {
       particlesJS('particles-questions', this.config);
     }
+
+    // Initialiser particles.js pour la section Chiffres (page À propos)
+    if (document.getElementById('particles-chiffres')) {
+      particlesJS('particles-chiffres', this.config);
+    }
+  },
+};
+
+// ===================================
+// COMPTEURS ANIMÉS (Page À propos)
+// ===================================
+
+const CounterAnimation = {
+  animated: false,
+
+  animateCounters() {
+    if (this.animated) return;
+    this.animated = true;
+
+    const counters = document.querySelectorAll('.stat-number');
+    
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+
+      const duration = 2000; // 2 secondes
+      const startTime = performance.now();
+
+      const updateCounter = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function (ease-out)
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * target);
+        
+        counter.textContent = current;
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      };
+      
+      requestAnimationFrame(updateCounter);
+    });
+  },
+
+  init() {
+    const statsSection = document.querySelector('.chiffres, .stats-section');
+    if (!statsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+  },
+};
+
+// ===================================
+// ANIMATIONS PAGE À PROPOS
+// ===================================
+
+const AproposAnimations = {
+  init() {
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    if (animatedElements.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
   },
 };
 
