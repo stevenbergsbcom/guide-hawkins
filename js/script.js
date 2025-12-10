@@ -71,7 +71,8 @@ const Header = {
     if (!DOM.header) return;
 
     // Utiliser passive: true pour de meilleures performances
-    window.addEventListener('scroll', utils.throttle(this.handleScroll.bind(this), 50), { passive: true });
+    // Throttle augmenté à 100ms pour réduire la fréquence des vérifications
+    window.addEventListener('scroll', utils.throttle(this.handleScroll.bind(this), 100), { passive: true });
 
     // Vérifier l'état initial
     this.handleScroll();
@@ -529,6 +530,7 @@ const FAQAccordion = {
 
 /**
  * Animations au scroll avec Intersection Observer
+ * Fusionné avec AproposAnimations pour un seul observer
  */
 const ScrollAnimations = {
   init() {
@@ -541,30 +543,70 @@ const ScrollAnimations = {
       document.querySelectorAll(animatedSelectors).forEach(el => {
         el.classList.add('is-visible');
       });
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        el.classList.add('visible');
+      });
       return;
     }
 
-    // Créer l'observer
+    // Créer un seul observer pour toutes les animations
+    // Version optimisée sans getComputedStyle pour éviter les blocages de scroll
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        // Traiter les entrées immédiatement sans manipulations DOM lourdes
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
+            const target = entry.target;
+
+            // Ajouter la classe immédiatement sans délai pour éviter les blocages
+            if (target.hasAttribute('data-animate')) {
+              target.classList.add('visible');
+            } else {
+              target.classList.add('is-visible');
+            }
+
             // Arrêter d'observer une fois visible
-            observer.unobserve(entry.target);
+            observer.unobserve(target);
           }
         });
       },
       {
-        threshold: 0.15, // Déclencher quand 15% visible
-        rootMargin: '0px',
+        threshold: 0.01, // Très bas pour déclencher immédiatement
+        rootMargin: '50px', // Marge positive pour déclencher avant l'entrée dans le viewport
       }
     );
 
     // Observer toutes les sections animées
     const animatedSections = document.querySelectorAll(animatedSelectors);
     animatedSections.forEach(section => {
-      observer.observe(section);
+      // Vérifier si la section est déjà visible au chargement
+      const rect = section.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight + 50 && rect.bottom > -50;
+
+      if (isVisible) {
+        // Rendre visible immédiatement si déjà dans le viewport
+        if (section.hasAttribute('data-animate')) {
+          section.classList.add('visible');
+        } else {
+          section.classList.add('is-visible');
+        }
+      } else {
+        // Observer seulement si pas encore visible
+        observer.observe(section);
+      }
+    });
+
+    // Observer aussi les éléments avec data-animate (fusion avec AproposAnimations)
+    const dataAnimateElements = document.querySelectorAll('[data-animate]');
+    dataAnimateElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight + 50 && rect.bottom > -50;
+
+      if (isVisible) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
     });
   },
 };
@@ -728,23 +770,28 @@ const TestimonialSlider = {
       });
     });
 
-    // Navigation clavier
-    document.addEventListener('keydown', (e) => {
-      const slider = document.querySelector('.testimonial-slider');
-      if (!slider) return;
+    // Navigation clavier - Listener uniquement sur le conteneur .temoignages
+    const temoignagesContainer = document.querySelector('.temoignages');
+    if (temoignagesContainer) {
+      temoignagesContainer.addEventListener('keydown', (e) => {
+        // Vérifier si le focus est dans le slider
+        const slider = temoignagesContainer.querySelector('.testimonial-slider');
+        if (!slider) return;
 
-      // Vérifier si le focus est dans le slider
-      if (slider.contains(document.activeElement) ||
-        document.activeElement.closest('.temoignages')) {
-        if (e.key === 'ArrowLeft') {
-          this.showSlide(this.currentSlide - 1);
-          this.resetAutoplay();
-        } else if (e.key === 'ArrowRight') {
-          this.showSlide(this.currentSlide + 1);
-          this.resetAutoplay();
+        if (slider.contains(document.activeElement) ||
+          document.activeElement.closest('.temoignages')) {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            this.showSlide(this.currentSlide - 1);
+            this.resetAutoplay();
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            this.showSlide(this.currentSlide + 1);
+            this.resetAutoplay();
+          }
         }
-      }
-    });
+      });
+    }
   },
 
   showSlide(index) {
@@ -794,6 +841,42 @@ const TestimonialSlider = {
 };
 
 // ===================================
+// SMOOTH SCROLL POUR LES ANCRES
+// ===================================
+
+/**
+ * Gestion du smooth scroll uniquement pour les liens d'ancrage
+ * Évite les blocages de scroll général tout en gardant le smooth pour les ancres
+ */
+const SmoothScroll = {
+  init() {
+    // Écouter les clics sur les liens d'ancrage
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const href = link.getAttribute('href');
+      // Ignorer les ancres vides ou juste "#"
+      if (!href || href === '#' || href === '#!') return;
+
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        e.preventDefault();
+        // Utiliser requestAnimationFrame pour éviter de bloquer le scroll
+        requestAnimationFrame(() => {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+      }
+    }, { passive: false, capture: true });
+  }
+};
+
+// ===================================
 // INITIALISATION
 // ===================================
 
@@ -810,6 +893,7 @@ function init() {
   AproposAnimations.init();
   TestimonialSlider.init();
   ConseilsFAQ.init();
+  SmoothScroll.init();
 }
 
 /**
@@ -1015,24 +1099,13 @@ const CounterAnimation = {
 // ANIMATIONS PAGE À PROPOS
 // ===================================
 
+// AproposAnimations est maintenant fusionné dans ScrollAnimations
+// pour éviter d'avoir plusieurs IntersectionObserver
 const AproposAnimations = {
   init() {
-    const animatedElements = document.querySelectorAll('[data-animate]');
-    if (animatedElements.length === 0) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    animatedElements.forEach(el => observer.observe(el));
+    // Ne plus créer d'observer séparé, ScrollAnimations s'en charge
+    // Cette fonction reste pour la compatibilité mais ne fait rien
+    // car les éléments [data-animate] sont maintenant observés par ScrollAnimations
   },
 };
 
